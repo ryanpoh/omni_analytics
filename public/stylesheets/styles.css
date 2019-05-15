@@ -1,0 +1,54 @@
+body {
+	background: url(https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+	font-family: 'Lato', sans-serif;
+	color: white;
+}
+
+#content {
+	text-align: center;
+	padding-top: 15%;
+	text-shadow: 1px solid rgba(0,0,0,0.2), 
+				  0px 8px 13px rgba(0,0,0,0.1),
+				  0px 18px 23px rgba(0,0,0,0.1);
+	
+}
+
+
+#profile_details {
+	padding-top: 45px;
+}
+
+
+
+h2 {
+	padding-top:15px;
+}
+h1{
+	font-weight: 700;
+	font-size: 5em;
+}
+
+hr {
+	width: 800px;
+	border-top: 1px solid #f8f8f8;
+	border-bottom: 1px solid rgba(0,0,0,0.2); 
+}
+
+html{
+	height: 100%;
+}
+
+.jumbotron{
+color: #4a4f59;
+}
+
+
+
+
+
+
+

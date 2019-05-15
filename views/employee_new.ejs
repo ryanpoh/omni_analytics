@@ -1,0 +1,33 @@
+<% include partials/header %>
+
+<div class = "container">
+		<h1>
+		Add a New Employee
+	</h1>
+	<hr>
+	<form action="/employees" method="POST">
+	  <div class="form-group col-md">
+		<input class="form-control" type="text" name="firstName" placeholder="First Name">
+	  </div>
+	  <div class="form-group col-md">
+		<input class="form-control" type="text" name="lastName" placeholder="Last Name">
+	  </div>
+	  <div class="form-group">
+		<input class="form-control" type="number" name="employeeID" placeholder="Employee ID">
+	  </div>
+	  <div class="form-group">
+		<input class="form-control" type="text" name="position" placeholder="Position">
+	  </div>
+	  <div class="form-group">
+		<input class="form-control" type="text" name="department" placeholder="Department">
+	  </div>
+	  <div class="form-group">
+		<input class="form-control" type="text" name="picture" placeholder="Optional: Profile Pic Image Address">
+	  </div>		
+
+	  <button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+
+
+<% include partials/footer %>

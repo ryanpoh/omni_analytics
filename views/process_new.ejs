@@ -1,0 +1,29 @@
+<% include partials/header %>
+
+<div class = "container">
+		<h1>
+		Add a New Process
+	</h1>
+	<hr>
+	<form action="/processes" method="POST">		
+	  <div class="form-group col-md">
+		<input class="form-control" type="text" name="processName" placeholder="Process Name">
+	  </div>
+	  <div class="form-group col-md">
+		<input class="form-control" type="number" name="processId" placeholder="Process ID">
+	  </div>		
+	  <div class="form-group col-md">
+		<input class="form-control" type="number" step=".01" name="processCost"  placeholder="Process Cost">
+	  </div>
+	  <div class="form-group">
+		<input class="form-control" type="number" step=".01" name="processTime" placeholder="Process Time">
+	  </div>
+
+
+
+	  <button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+
+
+<% include partials/footer %>

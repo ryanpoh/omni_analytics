@@ -1,0 +1,182 @@
+<% include partials/header %>
+	
+	<div class = "container">
+			<div class="jumbotron">
+				<a  href="/employees/" class="btn btn-default btn-lg"><i class="fas fa-arrow-circle-left"> Go Back</i></a>
+				<h1>Employee Profile</h1>
+				<div = class="row">
+					<div class="col-lg-4">
+						<img src="<%= foundEmployee.picture %>" class="img-rounded"  width="90%" height="90%">		
+					</div>	
+					<div class = "col-lg-6" id = "profile_details">
+						<p>Name: <span><%= foundEmployee.firstName %>  <%= foundEmployee.lastName %></span></p>
+						<p>Employee ID: <span><%= foundEmployee.employeeID %></span></p>	
+						<p>Department: <span><%= foundEmployee.department %></span></p>
+						<p>Position: <span><%= foundEmployee.position %></span></p>	
+					</div>						
+				</div>				
+
+				<div class="row">
+					<h2>Performance Metrics</h2>
+					<table class="table">
+					  <thead>
+						<tr>
+				      <th scope="col">Month</th>
+				      <th scope="col">Lot No.</th>
+					  <th scope="col">Lot Size</th>
+				      <th scope="col">Lot Quan.</th>
+				      <th scope="col">Sheet No.</th>
+				      <th scope="col">Process ID</th>
+				      <th scope="col">Time Taken</th>
+				      <th scope="col">Standard</th>
+				      <th scope="col">Performance (%)</th>				      				      
+						</tr>
+					  </thead>
+					  <tbody>
+						<tr>
+					<% lots.forEach(function(lot, i){ %> 
+						<tr>
+						  <th scope="row">May</th>
+						  <td><%= lot.lotNumber %></td>
+						  <td><%= lot.lotSize %></td>
+						  <td><%= lot.lotQuantity %></td>
+						  <td><%= lot.jobSheetNumber %></td>
+						  <td><%= lot.processId %></td>
+						  <td><%= lot.timeTaken %></td>
+						  <td><%= processTime[i] %></td>				      
+						  <td><%= performance[i] %></td>				      
+						</tr>
+					 <% }); %>						  
+						<tr>
+						  <th scope="row">April</th>
+						  <td>7</td>
+						  <td>L</td>
+						  <td>68</td>
+						  <td>4</td>	
+						  <td>300</td>				      
+						  <td>30</td>				      
+						  <td>40</td>				      
+						  <td>67</td>				      
+						</tr>
+						<tr>
+						  <th scope="row">March</th>
+						  <td>1</td>
+						  <td>S</td>
+						  <td>47</td>
+						  <td>6</td>	
+						  <td>300</td>				      
+						  <td>30</td>				      
+						  <td>30</td>				      
+						  <td>100</td>				      
+						</tr>				    
+					  </tbody>
+					</table>				
+
+				</div>
+				<div class="row">
+					<div class="col-lg-6" >
+						<canvas id="myChart" width="50%" height="50%"></canvas>
+					</div>
+					<div class="col-lg-6" >
+						<canvas id="myChart2" width="50%" height="50%"></canvas>
+					</div>					
+				</div>
+			</div>
+
+		</div>
+<script>
+
+
+var timeTaken = [<%= timeTaken %>];// it will output ewithout array [] borders
+var processTime = [<%= processTime %>];// it will output ewithout array [] borders
+var unixTime = [<%= unixTime %>];// it will output ewithout array [] borders
+var performance = [<%= performance %>]
+
+var months = ["Feb", "March", "April", "May"],
+	averagePerformance = [80,75,89];
+	
+	var sum_performance = 0;
+	for( var i = 0; i < performance.length; i++ ){
+		sum_performance += parseInt( performance[i], 10 ); //don't forget to add the base
+	}
+
+	averagePerformance.push(sum_performance /performance.length);
+
+	
+var unixTime = [];
+	for( var i = 0; i < performance.length; i++ ){
+		unixTime.push(i);
+	}
+	
+	console.log(unixTime)
+
+	
+	
+	var ctx = document.getElementById("myChart");
+	var myChart = new Chart(ctx, {
+	  type: 'line',
+	  data: {
+		labels: months,
+		datasets: [
+		  { 
+			label: 'Employee Performance',
+			backgroundColor: 'rgba(121, 61, 244, 0.5)',      	
+			data: averagePerformance
+		  }			
+		]
+	  },
+		options: { 
+			title: {
+				display: true,
+				text: "Employee Monthly Performance",
+				fontSize: 15, 
+			
+		},
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			}
+		}		
+	});
+
+	var ctx2 = document.getElementById("myChart2");
+	var myChart2 = new Chart(ctx2, {
+	  type: 'line',
+	  data: {
+		labels: unixTime,
+		datasets: [		
+		  { 
+			label: 'Employee Process Time',
+			backgroundColor: 'rgba(0, 255, 0, 0.4)',
+			data: timeTaken
+		  },
+		  { 
+			label: 'Standard Process Time',
+			backgroundColor: 'rgba(0, 0, 255, 0.5)',
+			data: processTime
+		  }      
+		]
+	  },
+		options: { 
+			title: {
+				display: true,
+				text: "Employee Efficiency",
+				fontSize: 15, 
+			
+		},
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			}
+		}			
+	});
+	
+</script>
+
+<% include partials/footer %>
