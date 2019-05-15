@@ -1,10 +1,11 @@
 {
-  "name": "v1",
-  "version": "1.0.0",
-  "description": "Skyline V1",
+  "name": "Skyline Analytics",
+  "version": "1.8",
+  "description": "CPS IOT App",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+	 "start": "node app.js"
   },
   "author": "Ryan Poh",
   "license": "ISC",
