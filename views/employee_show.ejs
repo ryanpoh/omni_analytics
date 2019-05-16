@@ -35,6 +35,8 @@
 					  </thead>
 					  <tbody>
 						<tr>
+							
+					<% var total= -1; %>
 					<% lots.forEach(function(lot, i){ %> 
 						<tr>
 						  <th scope="row"><%= i %></th>
@@ -46,11 +48,13 @@
 						  <td><%= lot.processId %></td>
 						  <td><%= lot.timeTaken %></td>
 						  <td><%= processTime[i] %></td>				      
-						  <td><%= performance[i] %></td>				      
+						  <td><%= performance[i] %></td>
+						<% total = total + 1; %>
 						</tr>
 					 <% }); %>						  
 						<tr>
-						  <th scope="row">April</th>
+						  <th scope="row"><%= total + 1 %></th>
+						  <td>April</td>
 						  <td>7</td>
 						  <td>L</td>
 						  <td>68</td>
@@ -61,7 +65,8 @@
 						  <td>89</td>				      
 						</tr>
 						<tr>
-						  <th scope="row">March</th>
+						  <th scope="row"><%= total + 2 %></th>
+						  <td>March</td>
 						  <td>1</td>
 						  <td>S</td>
 						  <td>47</td>
@@ -71,7 +76,8 @@
 						  <td>15</td>				      
 						  <td>75</td>				      
 						</tr>
-						  <th scope="row">Feb</th>
+						  <th scope="row"><%= total + 3 %></th>
+						  <td>Feb</td>
 						  <td>5</td>
 						  <td>XS</td>
 						  <td>41</td>
