@@ -15,7 +15,6 @@ var employeeRoutes = require('./routes/employees'),
 	apiRoutes = require('./routes/api');
 
 
-
 mongoose.connect('mongodb+srv://rypoh1:xPh1Fl7T8hS02Lv7@cluster0-u4hbd.mongodb.net/test?retryWrites=true', {
 	useNewUrlParser: true,
 	useCreateIndex: true
@@ -24,9 +23,6 @@ mongoose.connect('mongodb+srv://rypoh1:xPh1Fl7T8hS02Lv7@cluster0-u4hbd.mongodb.n
 }).catch(err => {
 	console.log('ERROR:', err.message);
 });
-
-
-
 
 
 app.set("view engine", "ejs");
@@ -56,42 +52,6 @@ passport.deserializeUser(User.deserializeUser());
 // 	}
 // 	passport.authenticate("local");
 // 	console.log('REGISTRATION SUCCESSFUL');
-// });
-
-
-// var asia = [];
-
-
-// Process.find({}, function(err, processesData){ //{} means you take everything from DB
-// 	if(err){
-// 		console.log(err);
-// 	} else {
-// 		var processes = processesData;
-// 		var select_process = processesData[1];
-// 		// console.log(select_process);
-// 		var string = JSON.stringify(select_process);
-// 		// console.log(string);
-//         var obj = JSON.parse(string);
-// 		console.log(obj);
-// 		asia.push(obj.processTime);
-		
-		
-// 	}
-// });
-
-// Process.find({}, function(err, processesData){ //{} means you take everything from DB
-// 	if(err){
-// 		console.log(err);
-// 	} else {
-// 		var processes = processesData;
-// 		var select_process = processesData[1];
-// 		console.log(select_process);
-// 		var string = JSON.stringify(select_process);
-// 		console.log(string);
-//         var obj = JSON.parse(string);
-// 		console.log(obj);
-// 		console.log("Time = " + obj['processTime']);
-// 	}
 // });
 
 
@@ -144,7 +104,8 @@ function isLoggedIn(req,res, next){
 
 
 
+// app.listen(3000, function(){   // DEBUG LOCALLY
+app.listen(process.env.PORT || 5000, function(){  //DEPLOYMENT
 
-app.listen(process.env.PORT || 5000, function(){
 	console.log('Skyline v8 server listening on port 5000');
 });
