@@ -21,7 +21,7 @@
 				<table class="table">
 				  <thead>
 				    <tr>
-				      <th scope="col">Index</th>
+				      <th scope="col">#</th>
 				      <th scope="col">Employee ID</th>
 				      <th scope="col">Lot No.</th>
 					  <th scope="col">Lot Size</th>
@@ -36,7 +36,7 @@
 				  <tbody>
 					<% lots.forEach(function(lot, i){ %> 
 						<tr>
-						  <th scope="row">i</th>
+						  <th scope="row"><%= i %></th>
 						  <td><%= lot.employeeID %></th>
 						  <td><%= lot.lotNumber %></td>
 						  <td><%= lot.lotSize %></td>
