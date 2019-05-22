@@ -5,7 +5,7 @@ var	Lot = require('../models/lot');
 
 router.post('/api/update', function(req,res){  //respond as POST eventhough same route. USING REST API
 	//GET DATA FROM THE FORM AND ADD TO ARRAY
-	var employeeID = req.query.employeeID;
+	var employeeID = req.body.employeeID;
 	var lotNumber = req.query.lotNumber;
 	var lotSize = req.query.lotSize;
 	var lotQuantity = req.query.lotQuantity;
