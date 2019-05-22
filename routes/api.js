@@ -14,6 +14,9 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 	var timeTaken = req.query.timeTaken;
 	var date = req.query.date;
 	
+	console.log("\nemployeeID take from LINK: "+employeeID);
+	console.log("\nlotNumber take from LINK: "+lotNumber);
+
 	var newLot = {	
 		employeeID: employeeID,
 		lotNumber: lotNumber, 
@@ -24,13 +27,15 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 		timeTaken: timeTaken,
 		date: date
 	};
+
+	console.log("\n\nnewLot object =" +newLot);
 	
 	// CREATING A NEW DATA ENTRY AND SAVING IT TO DB
 	Lot.create(newLot, function(err, newLot){
 			if(err){
 				console.log(err);
 			} else {
-				console.log('NEW LOT ADDED \n=================');
+				// console.log('NEW LOT ADDED \n=================');
 				console.log(newLot);
 				res.send('\n DATABASE UPDATE SUCESSFULL');
 			}
