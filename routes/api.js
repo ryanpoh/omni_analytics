@@ -5,17 +5,26 @@ var	Lot = require('../models/lot');
 
 router.post('/api/update', function(req,res){  //respond as POST eventhough same route. USING REST API
 	//GET DATA FROM THE FORM AND ADD TO ARRAY
+	// var employeeID = req.query.employeeID;
+	// var lotNumber = req.query.lotNumber;
+	// var lotSize = req.query.lotSize;
+	// var lotQuantity = req.query.lotQuantity;
+	// var jobSheetNumber = req.query.jobSheetNumber;
+	// var processId = req.query.processId; 
+	// var timeTaken = req.query.timeTaken;
+	// var date = req.query.date;
+
 	var employeeID = req.body.employeeID;
-	var lotNumber = req.query.lotNumber;
-	var lotSize = req.query.lotSize;
-	var lotQuantity = req.query.lotQuantity;
-	var jobSheetNumber = req.query.jobSheetNumber;
-	var processId = req.query.processId; 
-	var timeTaken = req.query.timeTaken;
-	var date = req.query.date;
+	var lotNumber = req.body.lotNumber;
+	var lotSize = req.body.lotSize;
+	var lotQuantity = req.body.lotQuantity;
+	var jobSheetNumber = req.body.jobSheetNumber;
+	var processId = req.body.processId; 
+	var timeTaken = req.body.timeTaken;
+	var date = req.body.date;	
 	
-	console.log("\nemployeeID take from LINK: "+employeeID);
-	console.log("\nlotNumber take from LINK: "+lotNumber);
+	// console.log("\nemployeeID take from LINK: "+employeeID);
+	// console.log("\nlotNumber take from LINK: "+lotNumber);
 
 	var newLot = {	
 		employeeID: employeeID,
