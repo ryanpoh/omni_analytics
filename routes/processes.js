@@ -3,10 +3,10 @@ var express = require('express'),
 
 var	Process = require('../models/process');
 
-router.post('/processes', isLoggedIn, function(req,res){  //respond as POST eventhough same route. USING REST API
+router.post('/lots', isLoggedIn, function(req,res){  //respond as POST eventhough same route. USING REST API
 	//GET DATA FROM THE FORM AND ADD TO ARRAY
-	var processName = req.body.processName;
-	var processId =req.body.processId;
+	var lotName = req.body.lotName;
+	var lotId =req.body.lotId;
 	var totalQuantity = req.body.totalQuantity;
 	var subSizeButton = req.body.subSizeButton;
 
@@ -35,15 +35,16 @@ router.post('/processes', isLoggedIn, function(req,res){  //respond as POST even
 
 
 	var newProcess = {	
-		processName: processName,  
-		processId: processId, 
+		lotName: lotName,  
+		lotId: lotId, 
 		totalQuantity: totalQuantity, 
 		// auto generated		
 		overallCompletion: 0,
+		status: 'Active',
 		totalSubQuantity: totalSubQuantity,		
 		subProcesses: {
 						buttonProcess: {
-										subProcessId: +processId+ +1, //unary operation
+										subProcessId: +lotId + +1, //unary operation
 										subSize: subSizeButton, 
 										subCompletion: 0, 
 										subQuantity: subQuantityButton,
@@ -51,7 +52,7 @@ router.post('/processes', isLoggedIn, function(req,res){  //respond as POST even
 										subCost: buttonCost,
 										}, 
 						collarProcess: {
-										subProcessId: +processId + +2 , 
+										subProcessId: +lotId + +2 , 
 										subSize: subSizeCollar , 
 										subCompletion: 0, 
 										subQuantity: subQuantityCollar,
@@ -59,7 +60,7 @@ router.post('/processes', isLoggedIn, function(req,res){  //respond as POST even
 										subCost: collarCost,
 										},
 						bodyProcess: 	{
-										subProcessId: +processId+ +3 ,  
+										subProcessId: +lotId + +3 ,  
 										subSize: subSizeBody ,
 										subCompletion: 0, 
 										subQuantity: subQuantityBody,
@@ -67,7 +68,7 @@ router.post('/processes', isLoggedIn, function(req,res){  //respond as POST even
 										subCost: bodyCost,
 										},
 						sleeveProcess: {
-										subProcessId: +processId+ +4 ,
+										subProcessId: +lotId + +4 ,
 										subSize: subSizeSleeve, 
 										subCompletion: 0, 
 										subQuantity: subQuantitySleeve,
@@ -89,7 +90,7 @@ router.post('/processes', isLoggedIn, function(req,res){  //respond as POST even
 	});
 });
 
-router.get('/processes', isLoggedIn, function(req,res){
+router.get('/lots', isLoggedIn, function(req,res){
 	//GET ALL PROCESSES FROM DB
 	Process.find({}, function(err, processesData){ //{} means you take everything from DB
 		if(err){
@@ -100,9 +101,104 @@ router.get('/processes', isLoggedIn, function(req,res){
 	});
 });
 
-router.get('/processes/new', isLoggedIn, function(req,res){
+router.get('/lots/new', isLoggedIn, function(req,res){
 	res.render("process_new");
 });
+
+
+
+
+router.get('/lots/:lotDataId',isLoggedIn, function(req, res){ //SHOW RESTFUL API - WHICH SHOWS MORE INFO ABOUT SOMETHING
+	
+	
+	// TAKEN FROM DB
+	var timeTakenLot = []; //[ 10 ]
+	var processesIdLot = [];
+
+	var processesTimeDb =[]; //[ 20, 30, 50, 30 ]
+	var processesIdDb = []; // [100,200,300]
+
+
+
+	// PROCESS INFO	
+	var respectiveProcessTime = [];	
+	var performance = []; 
+	var unixTime = [1, 2 ,3];
+	var objToPass = {lots: [], timeTaken: timeTakenLot, processTime: respectiveProcessTime, unixTime: unixTime, performance: performance, foundEmployee: []};
+	
+	Process.findById(req.params.lotDataId, function(err, foundLot){
+		if(err){
+			console.log(err);
+		} else {
+
+			res.render("process_show", {foundLot: foundLot});
+
+			// objToPass.foundEmployee = foundEmployee; 
+			// var string = JSON.stringify(foundEmployee);
+			// var obj = JSON.parse(string);
+			// var employeeId = obj.employeeID;
+			
+			// Lot.find({employeeID: employeeId}, function(err, foundLots){ //{} means you take everything from DB
+			// 	if(err){
+			// 		console.log(err);
+			// 	} else {
+					
+			// 		objToPass.lots = foundLots;    //full RAW lot Database file from DB	
+			// 		foundLots.forEach(function(individualLot){
+			// 			var string = JSON.stringify(individualLot);
+			// 			var obj = JSON.parse(string);
+			// 			processesIdLot.push(obj.processId);
+			// 			timeTakenLot.push(obj.timeTaken);
+			// 		});
+
+
+			// 		Process.find({}, function(err, processesData){ //{} means you take everything from DB
+			// 			if(err){
+			// 				console.log(err);
+			// 			} else {
+
+			// 				processesData.forEach(function(individualProcess){
+			// 					var string = JSON.stringify(individualProcess);
+			// 					var obj = JSON.parse(string);
+			// 					processesIdDb.push(obj.processId);  //[100] - no duplicates
+			// 					processesTimeDb.push(obj.processTime);
+			// 				});	
+
+			// 				processesIdLot.forEach(function(processIdLot, i){
+
+			// 					processesIdDb.forEach(function(processIdDb, j){
+
+			// 						if (processIdLot == processIdDb){
+			// 							respectiveProcessTime.push(processesTimeDb[j]);
+			// 							// console.log( 'time taken = ' + timeTakenLot[j]);
+			// 							// console.log('processesTimeDb =' +  processesTimeDb[j]);
+			// 							performance.push(Math.round(100 - ((timeTakenLot[i] - processesTimeDb[j]) / processesTimeDb[j] *100)));
+			// 							// console.log('CALCULATION =' + performance);
+			// 						} else {
+			// 							// console.log("No matches"); //why does it output no match but still get correct output
+			// 						}											 
+			// 					});
+
+
+			// 				});
+
+
+
+			// 				// res.render("process_show", objToPass);
+			// 			}	
+
+			// 		});	
+					
+
+			// 	}
+			// });				
+			
+		}	
+	});
+	
+});
+
+
 
 function isLoggedIn(req,res, next){
 	// if(req.isAuthenticated()){
