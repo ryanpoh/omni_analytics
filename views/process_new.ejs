@@ -7,20 +7,18 @@
 	<hr>
 	<form action="/processes" method="POST">		
 	  <div class="form-group col-md">
-		<input class="form-control" type="text" name="processName" placeholder="Process Name">
+		<input class="form-control" type="text" name="processName" placeholder="Lot Name">
 	  </div>
 	  <div class="form-group col-md">
 		<input class="form-control" type="number" name="processId" placeholder="Process ID">
 	  </div>		
-	  <div class="form-group col-md">
-		<input class="form-control" type="number" step=".01" name="processCost"  placeholder="Process Cost">
+	  <div class="form-group">
+		<input class="form-control" type="number" name="totalQuantity" placeholder="No. Shirts">
 	  </div>
 	  <div class="form-group">
-		<input class="form-control" type="number" step=".01" name="processTime" placeholder="Process Time">
+		<input class="form-control" type="number" name="subSizeButton" placeholder="Buttons/shirt">
 	  </div>
-
-
-
+	 		  	  	
 	  <button type="submit" class="btn btn-primary">Submit</button>
 	</form>
 </div>

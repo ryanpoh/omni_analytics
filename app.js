@@ -7,6 +7,7 @@ var express = require('express'),
 	passportLocalMongoose = require('passport-local-mongoose');
 
 var User = require("./models/user");
+var	Process = require('./models/process');
 
 
 var employeeRoutes = require('./routes/employees'),
@@ -59,9 +60,38 @@ passport.deserializeUser(User.deserializeUser());
 // 	if(err){
 // 		console.log(err);
 // 	} else {
+
 // 		console.log(processesData);
 // 	}
 // });
+
+
+// // UPDATING THE DATABASE
+// var processName = {'processName':'Manufacturing Paper'};
+
+
+// Process.findOneAndUpdate(processName, {processId:'100'}, {upsert:true}, function(err, foundProcess){ //{} means you take everything from DB
+// 	if(err){
+// 		console.log(err);
+// 	} else {
+
+// 		console.log(foundProcess);
+// 	}
+// });
+
+
+
+// var query = {'username':req.user.username};
+// req.newData.username = req.user.username;
+// MyModel.findOneAndUpdate(query, req.newData, {upsert:true}, function(err, doc){
+//     if (err) return res.send(500, { error: err });
+//     return res.send("succesfully saved");
+// });
+
+
+
+
+
 
 
 // LOGIN
@@ -104,8 +134,8 @@ function isLoggedIn(req,res, next){
 
 
 
-// app.listen(3000, function(){   // DEBUG LOCALLY
-app.listen(process.env.PORT || 5000, function(){  //DEPLOYMENT
+app.listen(3000, function(){   // DEBUG LOCALLY
+// app.listen(process.env.PORT || 5000, function(){  //DEPLOYMENT
 
-	console.log('Skyline v8 server listening on port 5000');
+	console.log('Skyline v9 server listening on port 3000');
 });

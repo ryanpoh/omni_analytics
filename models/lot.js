@@ -4,7 +4,7 @@ var lotDataSchema = new mongoose.Schema({
 	lotNumber: Number, 
 	lotSize: String, 
 	lotQuantity: Number,
-	jobSheetNumber: Number,
+	jobSheetNumber: String,
 	processId: Number,
 	timeTaken: Number,
 	date: {type: Number, default: Date.now()}
