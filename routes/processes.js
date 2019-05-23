@@ -85,7 +85,7 @@ router.post('/lots', isLoggedIn, function(req,res){  //respond as POST eventhoug
 			} else {
 				console.log('NEW PROCESS ADDED \n=================');
 				console.log(newProcess);
-				res.redirect('/processes');
+				res.redirect('/lots');
 			}
 	});
 });

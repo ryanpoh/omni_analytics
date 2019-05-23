@@ -15,7 +15,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 	// var date = req.query.date;
 
 	var employeeID = req.body.employeeID;
-	var lotNumber = req.body.lotNumber;
+	var lotId = req.body.lotId;
 	var lotSize = req.body.lotSize;
 	var lotQuantity = req.body.lotQuantity;
 	var jobSheetNumber = req.body.jobSheetNumber;
@@ -28,7 +28,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 
 	var newLot = {	
 		employeeID: employeeID,
-		lotNumber: lotNumber, 
+		lotId: lotId, 
 		lotSize: lotSize, 
 		lotQuantity: lotQuantity,
 		jobSheetNumber: jobSheetNumber,

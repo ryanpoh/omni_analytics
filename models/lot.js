@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var lotDataSchema = new mongoose.Schema({
 	employeeID: Number,
-	lotNumber: Number, 
+	lotId: Number, 
 	lotSize: String, 
 	lotQuantity: Number,
 	jobSheetNumber: String,

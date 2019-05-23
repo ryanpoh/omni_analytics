@@ -116,8 +116,15 @@ router.get('/employees/:employeeDataId',isLoggedIn, function(req, res){ //SHOW R
 							processesData.forEach(function(individualProcess){
 								var string = JSON.stringify(individualProcess);
 								var obj = JSON.parse(string);
-								processesIdDb.push(obj.processId);  //[100] - no duplicates
-								processesTimeDb.push(obj.processTime);
+								processesIdDb.push(obj.subProcesses.buttonProcess.subProcessId);  
+								processesIdDb.push(obj.subProcesses.collarProcess.subProcessId);  
+								processesIdDb.push(obj.subProcesses.bodyProcess.subProcessId);  
+								processesIdDb.push(obj.subProcesses.sleeveProcess.subProcessId);  
+								
+								processesTimeDb.push(obj.subProcesses.buttonProcess.subTime);
+								processesTimeDb.push(obj.subProcesses.collarProcess.subTime);
+								processesTimeDb.push(obj.subProcesses.bodyProcess.subTime);
+								processesTimeDb.push(obj.subProcesses.sleeveProcess.subTime);
 							});	
 
 							processesIdLot.forEach(function(processIdLot, i){

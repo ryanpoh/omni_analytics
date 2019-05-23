@@ -52,7 +52,6 @@ router.get('/home', isLoggedIn, function(req, res){
 			// console.log(timeTakenLot);
 			// console.log('timeTakenLot' + timeTakenLot);
 			
-			
 			Process.find({}, function(err, processesData){ //{} means you take everything from DB
 				if(err){
 					console.log(err);
@@ -61,8 +60,15 @@ router.get('/home', isLoggedIn, function(req, res){
 					processesData.forEach(function(individualProcess){
 						var string = JSON.stringify(individualProcess);
 						var obj = JSON.parse(string);
-						processesIdDb.push(obj.processId);  //[100] - no duplicates
-						processesTimeDb.push(obj.processTime);
+						processesIdDb.push(obj.subProcesses.buttonProcess.subProcessId);  
+						processesIdDb.push(obj.subProcesses.collarProcess.subProcessId);  
+						processesIdDb.push(obj.subProcesses.bodyProcess.subProcessId);  
+						processesIdDb.push(obj.subProcesses.sleeveProcess.subProcessId);  
+						
+						processesTimeDb.push(obj.subProcesses.buttonProcess.subTime);
+						processesTimeDb.push(obj.subProcesses.collarProcess.subTime);
+						processesTimeDb.push(obj.subProcesses.bodyProcess.subTime);
+						processesTimeDb.push(obj.subProcesses.sleeveProcess.subTime);
 					});	
 
 					processesIdLot.forEach(function(processIdLot, i){
@@ -85,10 +91,10 @@ router.get('/home', isLoggedIn, function(req, res){
 					});
 
 
-					// console.log('STAFF PROCESS ID'+ processesIdLot );
-					// console.log('STAFF TIME TAKEN =' + timeTakenLot);
-					// console.log('RESPECTIVE PROCESS TIME =' + respectiveProcessTime);
-					// console.log('PERFORMANCE =' + performance);
+					console.log('STAFF PROCESS ID'+ processesIdLot );
+					console.log('STAFF TIME TAKEN =' + timeTakenLot);
+					console.log('RESPECTIVE PROCESS TIME =' + respectiveProcessTime);
+					console.log('PERFORMANCE =' + performance);
 					
 
 					res.render('home', objToPass);	

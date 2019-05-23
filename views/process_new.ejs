@@ -2,15 +2,16 @@
 
 <div class = "container">
 		<h1>
-		Add a New Process
+		Add a New Lot
 	</h1>
 	<hr>
-	<form action="/lots" method="POST">		
+	<form action="/lots" method="POST">	
+
 	  <div class="form-group col-md">
 		<input class="form-control" type="text" name="lotName" placeholder="Lot Name">
 	  </div>
 	  <div class="form-group col-md">
-		<input class="form-control" type="number" name="lotId" placeholder="Process ID">
+		<input class="form-control" type="number" name="lotId" placeholder="Lot ID">
 	  </div>		
 	  <div class="form-group">
 		<input class="form-control" type="number" name="totalQuantity" placeholder="No. Shirts">
@@ -18,6 +19,9 @@
 	  <div class="form-group">
 		<input class="form-control" type="number" name="subSizeButton" placeholder="Buttons/shirt">
 	  </div>
+	  <div class="form-group">
+		<input class="form-control" type="text" name="picture" placeholder="Optional: Profile Pic Image Address">
+	  </div>		  
 	 		  	  	
 	  <button type="submit" class="btn btn-primary">Submit</button>
 	</form>
