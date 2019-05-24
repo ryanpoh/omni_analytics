@@ -85,7 +85,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 										// console.log('NEW LOT ADDED \n=================');
 										// console.log(newLot);
 										res.send('\n DATABASE ARDUINO LOT UPDATE SUCESSFULL' + "=====================\n"+newLot +
-											"\n\n DATABASE LOT UPDATE SUCCESSFUL"  + "=====================\n"+updatedLot);
+											"\n\n DATABASE PROCESS LOT UPDATE SUCCESSFUL (BELOW IS PREVIOUS RECORD. MONGODB BUGGED)"  + "=====================\n"+updatedLot);
 
 									}
 							});	
@@ -147,8 +147,8 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 										// console.log('NEW LOT ADDED \n=================');
 										// console.log(newLot);
 										res.send('\n DATABASE ARDUINO LOT UPDATE SUCESSFULL' + "=====================\n"+newLot +
-										"\n\n DATABASE PROCESS LOT UPDATE SUCCESSFUL (BELOW IS PREVIOUS RECORD. MONGODB BUGGED"  + "=====================\n"+updatedLot);
-										
+										"\n\n DATABASE PROCESS LOT UPDATE SUCCESSFUL (BELOW IS PREVIOUS RECORD. MONGODB BUGGED)"  + "=====================\n"+updatedLot);
+
 									}
 							});	
 
@@ -211,7 +211,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 										// console.log('NEW LOT ADDED \n=================');
 										// console.log(newLot);
 										res.send('\n DATABASE ARDUINO LOT UPDATE SUCESSFULL' + "=====================\n"+newLot +
-											"\n\n DATABASE LOT UPDATE SUCCESSFUL"  + "=====================\n"+updatedLot);
+											"\n\n DATABASE PROCESS LOT UPDATE SUCCESSFUL (BELOW IS PREVIOUS RECORD. MONGODB BUGGED)"+updatedLot);
 									}
 							});	
 
@@ -274,7 +274,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 										// console.log('NEW LOT ADDED \n=================');
 										// console.log(newLot);
 										res.send('\n DATABASE ARDUINO LOT UPDATE SUCESSFULL' + "=====================\n"+newLot +
-											"\n\n DATABASE LOT UPDATE SUCCESSFUL"  + "=====================\n"+updatedLot);
+											"\n\n DATABASE PROCESS LOT UPDATE SUCCESSFUL (BELOW IS PREVIOUS RECORD. MONGODB BUGGED)"+updatedLot);
 
 									}
 							});	
