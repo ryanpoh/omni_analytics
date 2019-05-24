@@ -9,28 +9,31 @@ router.post('/lots', isLoggedIn, function(req,res){  //respond as POST eventhoug
 	var lotId =req.body.lotId;
 	var totalQuantity = req.body.totalQuantity;
 	var subSizeButton = req.body.subSizeButton;
+	var buttonTime = 20;
+	var buttonCost = 0.65;	
+	var collarTime = 30;
+	var collarCost = 0.85;	
+	var bodyTime = 15;
+	var bodyCost = 1.15;
+	var sleeveTime = 35;
+	var sleeveCost = 0.95;		
+
 
 	// FIXED DATA
-	var buttonTime = 20;
-	var buttonCost = 0.65;
 	var buttonSell = buttonCost * 1.5; //50% markup
 	var subQuantityButton = totalQuantity*subSizeButton;
 
-	var collarTime = 30;
-	var collarCost = 0.85;
+
 	var collarSell = collarCost * 1.5;
 	var subSizeCollar = 1;
 	var subQuantityCollar = totalQuantity*subSizeCollar;		
 
 
-	var bodyTime = 15;
-	var bodyCost = 1.15;
+
 	var bodySell = bodyCost * 1.5;
 	var subSizeBody = 1;	
 	var subQuantityBody = totalQuantity*subSizeBody;			
 
-	var sleeveTime = 35;
-	var sleeveCost = 0.95;
 	var sleeveSell = sleeveCost * 1.5; 
 	var subSizeSleeve = 2;	
 	var subQuantitySleeve = totalQuantity*subSizeSleeve;	

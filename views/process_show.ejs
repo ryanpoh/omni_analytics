@@ -11,7 +11,7 @@
 					<div class = "col-lg-6" id = "profile_details">
 						<p>Lot Name: <span><%= foundLot.lotName %></span></p>
 						<p>Lot ID: <span><%= foundLot.lotId %></span></p>
-						<p>Quantity: <span><%= foundLot.totalQuantity %></span></p>
+						<p>Quantity (pcs.): <span><%= foundLot.totalQuantity %></span></p>
 						<p>Status: <span><%= foundLot.status %></span></p>						
 						<p>Completion: <span><%= foundLot.overallCompletion %></span> %</p>	
 					</div>						
@@ -79,12 +79,112 @@
 
 					  </tbody>
 					</table>				
-
+					<hr>
 				</div>
+<!-- 				<div class="row">
+					<div class="col-lg-6" >
+						<canvas id="myChart" width="50%" height="50%"></canvas>
+					</div>
+					<div class="col-lg-6" >
+						<canvas id="myChart2" width="50%" height="50%"></canvas>
+					</div>					
+				</div> -->
+				<div class="row">
+					<div class="col-lg-6" >
+						<canvas id="myChart3" width="50%" height="50%"></canvas>
+					</div>
+					<div class="col-lg-6" >
+						<canvas id="myChart4" width="50%" height="50%"></canvas>
+					</div>					
+				</div>					
 
 			</div>
 
 		</div>
 
+
+<script>
+
+
+
+var months = ["Feb", "March", "April", "May"],
+	averagePerformance = [80,75,89];
+	
+
+
+
+	
+var unixTime = [];
+	for( var i = 0; i < performance.length; i++ ){
+		unixTime.push(i);
+	}
+	
+
+	
+	
+
+
+	var ctx3 = document.getElementById("myChart3");
+	var myChart3 = new Chart(ctx3, {
+	  type: 'doughnut',
+	  data: {
+		labels: ["Sleeve","Body","Collar", "Buttons" ],
+		datasets: [		
+		  { 
+			label: "Sub-Process Distribution", 
+			backgroundColor: [
+								"rgb(255, 99, 132)",
+								"rgb(54, 162, 235)",
+								"rgb(255, 205, 86)",
+								"rgba(0, 255, 0, 0.4)",
+							],
+			data: [<%= f.sleeveProcess.subQuantity %>, <%= f.bodyProcess.subQuantity %>,<%= f.collarProcess.subQuantity %>,<%= f.buttonProcess.subQuantity %>]
+		  }      
+		]
+	  },
+		options: { 
+			title: {
+				display: true,
+				text: "<%= foundLot.lotName %> Quantity Distribution (pcs.)",
+				fontSize: 15, 
+			
+				},
+		}			
+	});	
+
+	var restOfPie = 100 - <%= f.sleeveProcess.subCompletion %> - <%= f.bodyProcess.subCompletion %> - <%= f.collarProcess.subCompletion %> - <%= f.buttonProcess.subCompletion %>;
+
+	var ctx4 = document.getElementById("myChart4");
+	var myChart4 = new Chart(ctx4, {
+	  type: 'pie',
+	  data: {
+		labels: ["In Progress" ,"Sleeves Completed","Body Completed","Collars Completed", "Buttons Completed" ],
+		datasets: [		
+		  { 
+			label: "Sub-Process Distribution", 
+			backgroundColor: [
+								"rgba(134, 136, 138, 0.60)",
+								"rgb(255, 99, 132)",
+								"rgb(54, 162, 235)",
+								"rgb(255, 205, 86)",
+								"rgba(0, 255, 0, 0.4)",
+							],
+
+			data: [restOfPie, <%= f.sleeveProcess.subCompletion %>, <%= f.bodyProcess.subCompletion %>,<%= f.collarProcess.subCompletion %>,<%= f.buttonProcess.subCompletion %>]
+		  }      
+		]
+	  },
+		options: { 
+			title: {
+				display: true,
+				text: "<%= foundLot.lotName %> Lot Progress (%)",
+				fontSize: 15, 
+			
+				},
+		}			
+	});	
+
+	
+</script>
 
 <% include partials/footer %>
