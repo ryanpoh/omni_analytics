@@ -56,6 +56,8 @@ passport.deserializeUser(User.deserializeUser());
 // });
 
 
+
+
 // Process.find({processName:'Manufacturing Paper', processCost:'0.85'}, function(err, processesData){ //{} means you take everything from DB
 // 	if(err){
 // 		console.log(err);
@@ -80,15 +82,31 @@ passport.deserializeUser(User.deserializeUser());
 // });
 
 
-//UPDATING NESTED OBJECTS
-// var lotIdFilter = {'lotId':'3000'};
-// Process.findOneAndUpdate(lotIdFilter, {$set: {'subProcesses.buttonProcess.subProcessId': 3001}}, function(err, doc) {
-//     console.log(doc);
+// // UPDATING NESTED OBJECTS
+// Process.findOneAndUpdate({'lotId':'600'}, {$set: {'subProcesses.buttonProcess.subCompletion': 0, 'overallCompletion':0}}, function(err, doc) {
+//     console.log("FIANLLLLLL"+"\n" +doc);
 // });
 
 
 
+					// Process.updateOne(  {'lotId': 600 }, 
+					// 					{'subProcesses.bodyProcess.subCompletion': 0, 'overallCompletion': 0},  
+					// 					function(err, res){
 
+					// 	if(err){
+					// 		console.log(err);
+					// 	} else {
+
+
+					// 		// console.log(res);
+
+					// 	}
+					//   // Updated at most one doc, `res.modifiedCount` contains the number
+					//   // of docs that MongoDB updated
+					// });
+
+
+	
 
 
 
@@ -133,8 +151,8 @@ function isLoggedIn(req,res, next){
 
 
 
-// app.listen(3000, function(){   // DEBUG LOCALLY
-app.listen(process.env.PORT || 5000, function(){  //DEPLOYMENT
+app.listen(3000, function(){   // DEBUG LOCALLY
+// app.listen(process.env.PORT || 5000, function(){  //DEPLOYMENT
 
-	console.log('Skyline v9 server listening on port 3000');
+	console.log('Skyline v9 server listening on port 5000');
 });

@@ -13,25 +13,31 @@ router.post('/lots', isLoggedIn, function(req,res){  //respond as POST eventhoug
 	// FIXED DATA
 	var buttonTime = 20;
 	var buttonCost = 0.65;
+	var buttonSell = buttonCost * 1.5; //50% markup
 	var subQuantityButton = totalQuantity*subSizeButton;
 
 	var collarTime = 30;
 	var collarCost = 0.85;
+	var collarSell = collarCost * 1.5;
 	var subSizeCollar = 1;
 	var subQuantityCollar = totalQuantity*subSizeCollar;		
 
 
 	var bodyTime = 15;
 	var bodyCost = 1.15;
+	var bodySell = bodyCost * 1.5;
 	var subSizeBody = 1;	
 	var subQuantityBody = totalQuantity*subSizeBody;			
 
 	var sleeveTime = 35;
 	var sleeveCost = 0.95;
+	var sleeveSell = sleeveCost * 1.5; 
 	var subSizeSleeve = 2;	
 	var subQuantitySleeve = totalQuantity*subSizeSleeve;	
 
 	totalSubQuantity = subQuantityButton+subQuantityCollar+subQuantityBody+subQuantitySleeve;			
+	estimatedCost = buttonCost*subQuantityButton + collarCost*subQuantityCollar + bodyCost*subQuantityBody + buttonSleeve*subQuantitySleeve;
+	estimatedSell = buttonSell*subQuantityButton + collarSell*subQuantityCollar + bodySell*subQuantityBody + buttonSell*subQuantitySleeve;
 
 
 	var newProcess = {	
@@ -42,6 +48,8 @@ router.post('/lots', isLoggedIn, function(req,res){  //respond as POST eventhoug
 		overallCompletion: 0,
 		status: 'Active',
 		totalSubQuantity: totalSubQuantity,		
+		estimatedCost: estimatedCost,		
+		estimatedSell: estimatedSell,		
 		subProcesses: {
 						buttonProcess: {
 										subProcessId: +lotId + +1, //unary operation
@@ -50,6 +58,7 @@ router.post('/lots', isLoggedIn, function(req,res){  //respond as POST eventhoug
 										subQuantity: subQuantityButton,
 										subTime: buttonTime,
 										subCost: buttonCost,
+										subSell: buttonSell,
 										}, 
 						collarProcess: {
 										subProcessId: +lotId + +2 , 
@@ -58,6 +67,7 @@ router.post('/lots', isLoggedIn, function(req,res){  //respond as POST eventhoug
 										subQuantity: subQuantityCollar,
 										subTime: collarTime, 
 										subCost: collarCost,
+										subSell: collarSell,
 										},
 						bodyProcess: 	{
 										subProcessId: +lotId + +3 ,  
@@ -66,6 +76,7 @@ router.post('/lots', isLoggedIn, function(req,res){  //respond as POST eventhoug
 										subQuantity: subQuantityBody,
 										subTime: bodyTime, 
 										subCost: bodyCost,
+										subSell: bodySell,
 										},
 						sleeveProcess: {
 										subProcessId: +lotId + +4 ,
@@ -74,6 +85,7 @@ router.post('/lots', isLoggedIn, function(req,res){  //respond as POST eventhoug
 										subQuantity: subQuantitySleeve,
 										subTime: sleeveTime, 
 										subCost: sleeveCost, 								
+										subSell: sleeveSell, 								
 										},
 					},
 	};

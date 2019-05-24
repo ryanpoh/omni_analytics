@@ -13,19 +13,32 @@ router.get('/', function(req,res){
 router.get('/home', isLoggedIn, function(req, res){
 	
 	// TAKEN FROM DB
-	var timeTakenLot = []; //[ 10 ]
+	var timeTakenLot = []; 
 	var processesIdLot = [];
 
-	var processesTimeDb =[]; //[ 20, 30, 50, 30 ]
-	var processesIdDb = []; // [100,200,300]
+	var processesTimeDb =[]; 
+	var processesIdDb = []; 
+	var processesCostDb =[]; 
+	var processesSellDb = []; 
 
 
 
 	// PROCESS INFO	
 	var respectiveProcessTime = [];	
+	var respectiveProcessCost = [];	
+	var respectiveProcessSell = [];	
 	var performance = []; 
 	var unixTime = [];
-	var objToPass = {lots: [], timeTaken: timeTakenLot, processTime: respectiveProcessTime, unixTime: unixTime, performance: performance, featuredEmployees: []};
+	var objToPass = {
+						lots: [], 
+						timeTaken: timeTakenLot, 
+						processTime: respectiveProcessTime, 
+						processCost: respectiveProcessCost, 
+						processSell: respectiveProcessSell, 
+						unixTime: unixTime,
+						performance: performance, 
+						featuredEmployees: [],
+					};
 	
 	
 	Employee.find({featured: true}, function(err, employeesData){ //{} means you take everything from DB
@@ -69,6 +82,17 @@ router.get('/home', isLoggedIn, function(req, res){
 						processesTimeDb.push(obj.subProcesses.collarProcess.subTime);
 						processesTimeDb.push(obj.subProcesses.bodyProcess.subTime);
 						processesTimeDb.push(obj.subProcesses.sleeveProcess.subTime);
+
+						processesCostDb.push(obj.subProcesses.buttonProcess.subCost);   
+						processesCostDb.push(obj.subProcesses.collarProcess.subCost);  
+						processesCostDb.push(obj.subProcesses.bodyProcess.subCost);  
+						processesCostDb.push(obj.subProcesses.sleeveProcess.subCost);  
+						
+						processesSellDb.push(obj.subProcesses.buttonProcess.subSell);
+						processesSellDb.push(obj.subProcesses.collarProcess.subSell);
+						processesSellDb.push(obj.subProcesses.bodyProcess.subSell);
+						processesSellDb.push(obj.subProcesses.sleeveProcess.subSell);
+
 					});	
 
 					processesIdLot.forEach(function(processIdLot, i){
@@ -77,10 +101,13 @@ router.get('/home', isLoggedIn, function(req, res){
 
 							if (processIdLot == processIdDb){
 								respectiveProcessTime.push(processesTimeDb[j]);
+								respectiveProcessCost.push(processesCostDb[j]);
+								respectiveProcessSell.push(processesSellDb[j]);
 								
 								// console.log( 'time taken = ' + timeTakenLot[j]);
 								// console.log('processesTimeDb =' +  processesTimeDb[j]);
 								performance.push(Math.round(100 - ((timeTakenLot[i] - processesTimeDb[j]) / processesTimeDb[j] *100)));
+	
 								// console.log('CALCULATION =' + performance);
 							} else {
 								// console.log("No matches"); //why does it output no match but still get correct output
@@ -94,6 +121,7 @@ router.get('/home', isLoggedIn, function(req, res){
 					console.log('STAFF PROCESS ID'+ processesIdLot );
 					console.log('STAFF TIME TAKEN =' + timeTakenLot);
 					console.log('RESPECTIVE PROCESS TIME =' + respectiveProcessTime);
+					console.log('ProcessCost TIME =' + respectiveProcessCost);
 					console.log('PERFORMANCE =' + performance);
 					
 

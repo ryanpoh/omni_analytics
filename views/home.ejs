@@ -29,7 +29,8 @@
 				      <th scope="col">Sheet No.</th>
 				      <th scope="col">Sub-Process ID</th>
 				      <th scope="col">Time Taken</th>
-				      <th scope="col">Standard</th>
+				      <th scope="col">Standard Time</th>
+				      <th scope="col">Standard Cost</th>
 				      <th scope="col">Performance (%)</th>				      				      
 				    </tr>
 				  </thead>
@@ -45,6 +46,7 @@
 						  <td><%= lot.processId %></td>
 						  <td><%= lot.timeTaken %></td>
 						  <td><%= processTime[i] %></td>				      
+						  <td><%= processCost[i] %></td>				      
 						  <td><%= performance[i] %></td>				      
 						</tr>
 					 <% }); %>			    
