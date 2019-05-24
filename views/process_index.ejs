@@ -33,9 +33,9 @@
 					  <td><%= process.lotName %></td>
 					  <td><%= process.totalQuantity %></td>
 					  <td><%= process.status %></td>
-					  <td><%= process.estimatedCost %></td>
-					  <td><%= process.estimatedSell %></td>
-					  <td><%= process.overallCompletion %></td>
+					  <td><%= (process.estimatedCost).toFixed(2);  %></td>
+					  <td><%= (process.estimatedSell).toFixed(2);  %></td>
+					  <td><%= (process.overallCompletion).toFixed(2);  %></td>
 					  <td><span><a  href="/lots/<%= process._id %>" class="btn btn-default btn-m">Go</a></span></td>
 					</tr>
 				<% }); %>
