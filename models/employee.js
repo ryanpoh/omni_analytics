@@ -13,6 +13,7 @@ var employeesDataSchema = new mongoose.Schema({
 	featured:{type: Boolean, 
 			  default: false
 			 },
+	baseSalary: Number,
 });
 
 module.exports = mongoose.model("Employee", employeesDataSchema);
