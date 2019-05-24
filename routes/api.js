@@ -119,7 +119,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 					var newOverallCompletion = tempOverallCompletion + (newSubCompletion/100)*25;
 					var entryCost = tempSubCost * lotQuantity;
 
-					Process.findOneAndUpdate({'lotId':lotId}, {$set: {'subProcesses.collarProcess.subCompletion': newSubCompletion, 'overallCompletion':newOverallCompletion}}, function(err) {
+					Process.updateOne({'lotId':lotId}, {$set: {'subProcesses.collarProcess.subCompletion': newSubCompletion, 'overallCompletion':newOverallCompletion}}, function(err) {
 
 						if(err){
 							console.log(err);
@@ -146,7 +146,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 									} else {
 										// console.log('NEW LOT ADDED \n=================');
 										// console.log(newLot);
-										
+
 										Process.find({'lotId': lotId}, function(err, updatedLot){
 											res.send('\n DATABASE ARDUINO LOT UPDATE SUCESSFULL' + "=====================\n"+newLot +
 											"\n\n DATABASE PROCESS LOT UPDATE SUCCESSFUL"  + "=====================\n"+updatedLot);
