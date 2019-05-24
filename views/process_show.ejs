@@ -19,7 +19,7 @@
 						<p>Lot ID: <span><%= foundLot.lotId %></span></p>
 						<p>Quantity (pcs.): <span><%= foundLot.totalQuantity %></span></p>
 						<p>Status: <span><%= foundLot.status %></span></p>						
-						<p>Completion: <span><%= foundLot.overallCompletion %></span> %</p>	
+						<p>Completion: <span><%= (foundLot.overallCompletion).toFixed(2); %></span> %</p>	
 					</div>						
 				</div>				
 
