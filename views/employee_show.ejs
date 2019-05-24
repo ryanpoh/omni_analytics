@@ -13,6 +13,7 @@
 						<p>Employee ID: <span><%= foundEmployee.employeeID %></span></p>	
 						<p>Department: <span><%= foundEmployee.department %></span></p>
 						<p>Position: <span><%= foundEmployee.position %></span></p>	
+							
 					</div>						
 				</div>				
 
@@ -25,18 +26,19 @@
 				      <th scope="col">Month</th>
 				      <th scope="col">Lot No.</th>
 					  <th scope="col">Lot Size</th>
-				      <th scope="col">Lot Quan.</th>
-				      <th scope="col">Sheet No.</th>
+				      <th scope="col">Lot Quan. (pcs.)</th>
 				      <th scope="col">Process ID</th>
-				      <th scope="col">Time Taken</th>
-				      <th scope="col">Standard</th>
+				      <th scope="col">Time Taken (min)</th>
+				      <th scope="col">Standard (min)</th>
+				      <th scope="col">Entry Cost (RM)</th>
 				      <th scope="col">Performance (%)</th>				      				      
 						</tr>
 					  </thead>
 					  <tbody>
 						<tr>
 							
-					<% var total= -1; %>
+					<% var index= -1; %>
+					<% var salary= 0; %>
 					<% lots.forEach(function(lot, i){ %> 
 						<tr>
 						  <th scope="row"><%= i %></th>
@@ -44,51 +46,53 @@
 						  <td><%= lot.lotId %></td>
 						  <td><%= lot.lotSize %></td>
 						  <td><%= lot.lotQuantity %></td>
-						  <td><%= lot.jobSheetNumber %></td>
 						  <td><%= lot.processId %></td>
 						  <td><%= lot.timeTaken %></td>
 						  <td><%= processTime[i] %></td>				      
+						  <td><%= entryCost[i] %></td>				      
 						  <td><%= performance[i] %></td>
-						<% total = total + 1; %>
+						<% index = index + 1; %>
+						<% salary = salary + entryCost[i]; %>
 						</tr>
 					 <% }); %>						  
 						<tr>
-						  <th scope="row"><%= total + 1 %></th>
+						  <th scope="row"><%= index + 1 %></th>
 						  <td>April</td>
 						  <td>500</td>
 						  <td>L</td>
 						  <td>68</td>
-						  <td>4</td>	
-						  <td>501</td>				      
+						  <td>501</td>	
 						  <td>22</td>				      
 						  <td>20</td>				      
+						  <td>44.2</td>				      
 						  <td>89</td>				      
 						</tr>
 						<tr>
-						  <th scope="row"><%= total + 2 %></th>
+						  <th scope="row"><%= index + 2 %></th>
 						  <td>March</td>
 						  <td>600</td>
 						  <td>S</td>
 						  <td>47</td>
-						  <td>6</td>	
-						  <td>603</td>				      
+						  <td>603</td>	
 						  <td>19</td>				      
 						  <td>15</td>				      
+						  <td>54.05</td>				      
 						  <td>75</td>				      
 						</tr>
-						  <th scope="row"><%= total + 3 %></th>
+						  <th scope="row"><%= index + 3 %></th>
 						  <td>Feb</td>
 						  <td>500</td>
 						  <td>XS</td>
 						  <td>41</td>
-						  <td>5</td>	
-						  <td>503</td>				      
+						  <td>503</td>	
 						  <td>18</td>				      
 						  <td>15</td>				      
+						  <td>37.15</td>				      
 						  <td>80</td>				      
 						</tr>						  
 					  </tbody>
-					</table>				
+					</table>
+					<p>Cumalative Salary: <span>RM <%= salary %></span></p>				
 
 				</div>
 				<div class="row">

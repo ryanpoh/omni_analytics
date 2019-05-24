@@ -51,39 +51,36 @@ router.get('/employees/new', isLoggedIn, function(req,res){
 });
 
 
-var timeTakenLot = []; //[ 10 ]
-var processesIdLot = [];
-
-var processesTimeDb =[]; //
-var processesIdDb = []; //
-
-// PROCESS INFO
-var respectiveProcessTime = [];	
-var performance = []; 
-var unixTime = [1, 2 ,3];
-
-var objToPass = {lots: [], unixTime: unixTime, timeTaken: timeTakenLot, processTime: respectiveProcessTime, performance: performance, foundEmployee: []};
-
-
 
 
 router.get('/employees/:employeeDataId',isLoggedIn, function(req, res){ //SHOW RESTFUL API - WHICH SHOWS MORE INFO ABOUT SOMETHING
 	
 	
 	// TAKEN FROM DB
-	var timeTakenLot = []; //[ 10 ]
+	var timeTakenLot = []; 
 	var processesIdLot = [];
+	var entryCostLot = [];
 
-	var processesTimeDb =[]; //[ 20, 30, 50, 30 ]
-	var processesIdDb = []; // [100,200,300]
+	var processesTimeDb =[]; 
+	var processesIdDb = []; 
+	var processesCostDb = []; 
+	var processesSellDb = []; 
 
 
 
 	// PROCESS INFO	
 	var respectiveProcessTime = [];	
 	var performance = []; 
-	var unixTime = [1, 2 ,3];
-	var objToPass = {lots: [], timeTaken: timeTakenLot, processTime: respectiveProcessTime, unixTime: unixTime, performance: performance, foundEmployee: []};
+	var unixTime = [];
+	var objToPass = {
+						lots: [], 
+						timeTaken: timeTakenLot, 
+						processTime: respectiveProcessTime, 
+						performance: performance, 
+						foundEmployee: [],
+						unixTime: unixTime,
+						entryCost: entryCostLot,
+					};
 	
 	Employee.findById(req.params.employeeDataId, function(err, foundEmployee){
 		if(err){
@@ -105,6 +102,7 @@ router.get('/employees/:employeeDataId',isLoggedIn, function(req, res){ //SHOW R
 						var obj = JSON.parse(string);
 						processesIdLot.push(obj.processId);
 						timeTakenLot.push(obj.timeTaken);
+						entryCostLot.push(obj.entryCost);
 					});
 
 
@@ -125,6 +123,16 @@ router.get('/employees/:employeeDataId',isLoggedIn, function(req, res){ //SHOW R
 								processesTimeDb.push(obj.subProcesses.collarProcess.subTime);
 								processesTimeDb.push(obj.subProcesses.bodyProcess.subTime);
 								processesTimeDb.push(obj.subProcesses.sleeveProcess.subTime);
+
+								processesCostDb.push(obj.subProcesses.buttonProcess.subCost);   
+								processesCostDb.push(obj.subProcesses.collarProcess.subCost);  
+								processesCostDb.push(obj.subProcesses.bodyProcess.subCost);  
+								processesCostDb.push(obj.subProcesses.sleeveProcess.subCost);  
+								
+								processesSellDb.push(obj.subProcesses.buttonProcess.subSell);
+								processesSellDb.push(obj.subProcesses.collarProcess.subSell);
+								processesSellDb.push(obj.subProcesses.bodyProcess.subSell);
+								processesSellDb.push(obj.subProcesses.sleeveProcess.subSell);								
 							});	
 
 							processesIdLot.forEach(function(processIdLot, i){
