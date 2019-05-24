@@ -23,14 +23,13 @@
 				    <tr>
 				      <th scope="col">#</th>
 				      <th scope="col">Employee ID</th>
-				      <th scope="col">Lot Id.</th>
+				      <th scope="col">Lot ID</th>
 					  <th scope="col">Lot Size</th>
-				      <th scope="col">Lot Quan.</th>
-				      <th scope="col">Sheet No.</th>
 				      <th scope="col">Sub-Process ID</th>
 				      <th scope="col">Time Taken</th>
 				      <th scope="col">Standard Time</th>
-				      <th scope="col">Standard Cost</th>
+				      <th scope="col">Entry Quan.</th>				      
+				      <th scope="col">Entry Cost</th>
 				      <th scope="col">Performance (%)</th>				      				      
 				    </tr>
 				  </thead>
@@ -41,12 +40,11 @@
 						  <td><%= lot.employeeID %></th>
 						  <td><%= lot.lotId %></td>
 						  <td><%= lot.lotSize %></td>
-						  <td><%= lot.lotQuantity %></td>
-						  <td><%= lot.jobSheetNumber %></td>
 						  <td><%= lot.processId %></td>
 						  <td><%= lot.timeTaken %></td>
-						  <td><%= processTime[i] %></td>				      
-						  <td><%= processCost[i] %></td>				      
+						  <td><%= processTime[i] %></td>
+						  <td><%= lot.lotQuantity %></td>						  				      				      
+						  <td><%= entryCost[i] %></td>				      
 						  <td><%= performance[i] %></td>				      
 						</tr>
 					 <% }); %>			    

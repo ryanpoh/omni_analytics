@@ -15,6 +15,7 @@ router.get('/home', isLoggedIn, function(req, res){
 	// TAKEN FROM DB
 	var timeTakenLot = []; 
 	var processesIdLot = [];
+	var entryCostLot = [];
 
 	var processesTimeDb =[]; 
 	var processesIdDb = []; 
@@ -32,6 +33,7 @@ router.get('/home', isLoggedIn, function(req, res){
 	var objToPass = {
 						lots: [], 
 						timeTaken: timeTakenLot, 
+						entryCost: entryCostLot, 
 						processTime: respectiveProcessTime, 
 						processCost: respectiveProcessCost, 
 						processSell: respectiveProcessSell, 
@@ -60,6 +62,7 @@ router.get('/home', isLoggedIn, function(req, res){
 					var obj = JSON.parse(string);
 					processesIdLot.push(obj.processId);
 					timeTakenLot.push(obj.timeTaken);
+					entryCostLot.push(obj.entryCost);
 				});
 			// console.log(processesIdLot);
 			// console.log(timeTakenLot);
@@ -118,11 +121,11 @@ router.get('/home', isLoggedIn, function(req, res){
 					});
 
 
-					console.log('STAFF PROCESS ID'+ processesIdLot );
-					console.log('STAFF TIME TAKEN =' + timeTakenLot);
-					console.log('RESPECTIVE PROCESS TIME =' + respectiveProcessTime);
-					console.log('ProcessCost TIME =' + respectiveProcessCost);
-					console.log('PERFORMANCE =' + performance);
+					// console.log('STAFF PROCESS ID'+ processesIdLot );
+					// console.log('STAFF TIME TAKEN =' + timeTakenLot);
+					// console.log('RESPECTIVE PROCESS TIME =' + respectiveProcessTime);
+					// console.log('ProcessCost TIME =' + respectiveProcessCost);
+					// console.log('PERFORMANCE =' + performance);
 					
 
 					res.render('home', objToPass);	
