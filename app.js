@@ -4,6 +4,7 @@ var express = require('express'),
 	mongoose = require('mongoose'),
 	passport = require('passport'),
 	LocalStrategy = require('passport-local'),
+	methodOverride= require("method-override"),	
 	passportLocalMongoose = require('passport-local-mongoose');
 
 var User = require("./models/user");
@@ -29,6 +30,7 @@ mongoose.connect('mongodb+srv://rypoh1:xPh1Fl7T8hS02Lv7@cluster0-u4hbd.mongodb.n
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true})); //tell Express to use bodyParser it is for the POST req
 app.use(express.static(__dirname + '/public')); //to add local css and js files
+app.use(methodOverride("_method"));
 
 
 app.use(passport.initialize()); //sets up passport so we can use the methods in user.js model
@@ -151,8 +153,8 @@ function isLoggedIn(req,res, next){
 
 
 
-app.listen(3000, function(){   // DEBUG LOCALLY
-// app.listen(process.env.PORT || 5000, function(){  //DEPLOYMENT
+// app.listen(3000, function(){   // DEBUG LOCALLY
+app.listen(process.env.PORT || 5000, function(){  //DEPLOYMENT
 
 	console.log('Skyline v9 server listening on port 5000');
 });

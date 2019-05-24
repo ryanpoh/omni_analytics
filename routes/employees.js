@@ -52,6 +52,30 @@ router.get('/employees/new', isLoggedIn, function(req,res){
 	res.render("employee_new");
 });
 
+// EDIT REST API
+router.get('/employees/:employeeDataId/edit', isLoggedIn, function(req,res){
+	Employee.findById(req.params.employeeDataId, function(err, foundEmployee){
+		if(err){
+			res.redirect("/employees");
+		} else {
+			res.render("employee_edit", {employee: foundEmployee});			
+		}
+	});
+	
+});
+
+// UPDATE REST API
+router.put("/employees/:employeeDataId", function(req,res){
+	Employee.findByIdAndUpdate(req.params.employeeDataId, req.body.editEmployee, function(err,updatedEmployee){
+		if(err){
+			res.redirect("/employees");
+		} else {
+			res.redirect("/employees/"+req.params.employeeDataId);
+		}
+	})
+});
+
+
 
 
 

@@ -1,0 +1,34 @@
+<% include partials/header %>
+
+<div class = "container">
+		<h1>
+		Edit <%= employee.firstName %>'s Employee Profile
+	</h1>
+	<hr>
+	<form action="/employees/<%= employee._id %>?_method=PUT" method="POST">
+	  <div class="form-group col-md">
+		<input class="form-control" type="text" name="editEmployee[firstName]" value="<%= employee.firstName %>" >
+	  </div>
+	  <div class="form-group col-md">
+		<input class="form-control" type="text" name="editEmployee[lastName]" value="<%= employee.lastName %>" >
+	  </div>
+	  <div class="form-group">
+		<input class="form-control" type="text" name="editEmployee[position]" value="<%= employee.position %>" >
+	  </div>
+	  <div class="form-group">
+		<input class="form-control" type="text" name="editEmployee[department]" value="<%= employee.department %>"  >
+	  </div>	  
+	  <div class="form-group">
+		<input class="form-control" type="text" name="editEmployee[baseSalary]" value="<%= employee.baseSalary %>" >
+	  </div>	
+	  <div class="form-group">
+		<input class="form-control" type="text" name="editEmployee[picture]" value="<%= employee.picture %>"  >
+	  </div>		    
+		
+
+	  <button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+
+
+<% include partials/footer %>
