@@ -121,7 +121,28 @@ router.get('/lots/new', isLoggedIn, function(req,res){
 	res.render("process_new");
 });
 
+// EDIT REST API
+router.get('/lots/:lotDataId/edit', isLoggedIn, function(req,res){
+	Process.findById(req.params.lotDataId, function(err, foundLot){
+		if(err){
+			res.redirect("/lots");
+		} else {
+			res.render("process_edit", {lot: foundLot});			
+		}
+	});
+	
+});
 
+// UPDATE REST API
+router.put("/lots/:lotDataId", function(req,res){
+	Process.findByIdAndUpdate(req.params.lotDataId, req.body.editLot, function(err,updatedLot){
+		if(err){
+			res.redirect("/lots");
+		} else {
+			res.redirect("/lots/"+req.params.lotDataId);
+		}
+	})
+});
 
 
 router.get('/lots/:lotDataId',isLoggedIn, function(req, res){ //SHOW RESTFUL API - WHICH SHOWS MORE INFO ABOUT SOMETHING

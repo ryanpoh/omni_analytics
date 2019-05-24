@@ -1,0 +1,57 @@
+<% include partials/header %>
+
+<div class = "container">
+		<h1>
+		Edit <%= lot.lotName %>'s Lot Profile
+	</h1>
+	<hr>
+	<form action="/lots/<%= lot._id %>?_method=PUT" method="POST">
+	  <div class="form-group">
+		<label for="1">Lot Name:</label>	  	
+		<input id ="1" class="form-control" type="text" step ="any" name="editLot[lotName]" value="<%= lot.lotName %>" >
+	  </div>		    
+	  <div class="form-group">
+		<label for="2">Button Time:</label>	
+		<input id ="2" class="form-control" type="number" step ="any" name="editLot[subProcesses.buttonProcess.subTime]" value="<%= lot.subProcesses.buttonProcess.subTime %>" >
+	  </div>
+	  <div class="form-group">
+		<label for="3">Button Cost:</label>	
+		<input id ="3" class="form-control" type="number" step ="any" name="editLot[subProcesses.buttonProcess.subCost]" value="<%= lot.subProcesses.buttonProcess.subCost %>" >
+	  </div>
+	  <div class="form-group">
+		<label for="4">Collar Time:</label>	
+		<input id ="4" class="form-control" type="number" step ="any" name="editLot[subProcesses.collarProcess.subTime]" value="<%= lot.subProcesses.collarProcess.subTime %>" >
+	  </div>
+	  <div class="form-group">
+		<label for="5">Collar Cost:</label>	
+		<input id ="5" class="form-control" type="number" step ="any" name="editLot[subProcesses.collarProcess.subCost]" value="<%= lot.subProcesses.collarProcess.subCost %>" >
+	  </div>
+	  <div class="form-group">
+		<label for="6">Body Time:</label>	
+		<input id ="6" class="form-control" type="number" step ="any" name="editLot[subProcesses.bodyProcess.subTime]" value="<%= lot.subProcesses.bodyProcess.subTime %>" >
+	  </div>
+	  <div class="form-group">
+		<label for="7">Body Cost:</label>	
+		<input id ="7" class="form-control" type="number" step ="any" name="editLot[subProcesses.bodyProcess.subCost]" value="<%= lot.subProcesses.bodyProcess.subCost %>" >
+	  </div>
+
+	  <div class="form-group">
+		<label for="8">Sleeve Time:</label>	
+		<input id ="8" class="form-control" type="number" step ="any" name="editLot[subProcesses.sleeveProcess.subTime]" value="<%= lot.subProcesses.sleeveProcess.subTime %>" >
+	  </div>
+	  <div class="form-group">
+		<label for="9">Sleeve Cost:</label>	
+		<input id ="9" class="form-control" type="number" step ="any" name="editLot[subProcesses.sleeveProcess.subCost]" value="<%= lot.subProcesses.sleeveProcess.subCost %>" >
+	  </div>	    	  	  	  	  	  	  	  
+	  <div class="form-group">
+	  	<label for="10">Company Profile Pic:</label>	
+		<input id ="10" class="form-control" type="text" step ="any" name="editLot[picture]" value="<%= lot.picture %>" >
+	  </div>			  
+		
+
+	  <button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+
+
+<% include partials/footer %>

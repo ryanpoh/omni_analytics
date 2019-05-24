@@ -8,46 +8,60 @@
 	<form action="/lots" method="POST">	
 
 	  <div class="form-group col-md">
-		<input class="form-control" type="text" name="lotName" placeholder="Lot Name">
+		<label for="1">Lot Name:</label>		  	
+		<input id ="1" class="form-control" type="text" name="lotName" placeholder="">
 	  </div>
 	  <div class="form-group col-md">
-		<input class="form-control" type="number" name="lotId" placeholder="Lot ID">
+	  	<label for="2">Lot Id:</label>	
+		<input id ="2" class="form-control" type="number" name="lotId" placeholder="">
 	  </div>		
 	  <div class="form-group">
-		<input class="form-control" type="number" name="totalQuantity" placeholder="No. Shirts">
+	  	<label for="3">No. Shirts:</label>	
+		<input id ="3" class="form-control" type="number" name="totalQuantity" placeholder="">
 	  </div>
 	  <div class="form-group">
-		<input class="form-control" type="number" name="subSizeButton" placeholder="Buttons/shirt">
+	  	<label for="4">Button/shirt:</label>	
+		<input id ="4" class="form-control" type="number" name="subSizeButton" placeholder="">
 	  </div>
 	  <div class="form-group">
-		<input class="form-control" type="number" step ="any" name="buttonTime" placeholder="Standard Button Time/lot (min)">
+	  	<label for="5">Standard Button Time/lot (min):</label>	
+		<input id ="5" class="form-control" type="number" step ="any" name="buttonTime" placeholder="">
 	  </div>
 	  <div class="form-group">
-		<input class="form-control" type="number" step ="any" name="buttonCost" placeholder="Standard Button Cost/pcs. (RM)">
+	  	<label for="6">Standard Button Cost/pcs. (RM):</label>	
+		<input id ="6" class="form-control" type="number" step ="any" name="buttonCost" placeholder="">
 	  </div>
 	  <div class="form-group">
-		<input class="form-control" type="number" step ="any" name="collarTime" placeholder="Standard Collar Time/lot (min)">
+	  	<label for="7">Standard Collar Time/lot (min):</label>	
+		<input id ="7" class="form-control" type="number" step ="any" name="collarTime" placeholder="">
 	  </div>
 	  <div class="form-group">
-		<input class="form-control" type="number" step ="any" name="collarCost" placeholder="Standard Collar Cost/pcs. (RM)">
+	  	<label for="8">Standard Collar Cost/pcs. (RM):</label>	
+		<input id ="8" class="form-control" type="number" step ="any" name="collarCost" placeholder="">
 	  </div>
 	  <div class="form-group">
-		<input class="form-control" type="number" step ="any" name="bodyTime" placeholder="Standard Body Time/lot (min)">
+	  	<label for="9">Standard Body Time/lot (min):</label>	
+		<input id ="9" class="form-control" type="number" step ="any" name="bodyTime" placeholder="">
 	  </div>
 	  <div class="form-group">
-		<input class="form-control" type="number" step ="any" name="bodyCost" placeholder="Standard Body Cost/pcs. (RM)">
+	  	<label for="10">Standard Body Cost/pcs. (RM):</label>	
+		<input id ="10" class="form-control" type="number" step ="any" name="bodyCost" placeholder="">
 	  </div>
 	  <div class="form-group">
-		<input class="form-control" type="number" step ="any" name="sleeveTime" placeholder="Standard Sleeve Time/lot (min)">
+	  	<label for="11">Standard Sleeve Time/lot (min):</label>	
+		<input id ="11" class="form-control" type="number" step ="any" name="sleeveTime" placeholder="">
 	  </div>
 	  <div class="form-group">
-		<input class="form-control" type="number" step ="any" name="sleeveCost" placeholder="Standard Sleeve Cost/pcs. (RM)">
+	  	<label for="12">Standard Sleeve Cost/pcs. (RM):</label>	
+		<input id ="12" class="form-control" type="number" step ="any" name="sleeveCost" placeholder="">
 	  </div>	
 	  <div class="form-group">
-		<input class="form-control" type="number" step ="any" name="markupSell" placeholder="Markup % (e.g. 1.5 = 50% profit)">
+	  	<label for="13">Price Markup (%):</label>	
+		<input id ="13" class="form-control" type="number" step ="any" name="markupSell" placeholder="(e.g. 1.5 = 50% profit)">
 	  </div>	    	  	  	  	  	  	  	  
 	  <div class="form-group">
-		<input class="form-control" type="text" step ="any" name="picture" placeholder="Optional: Company Profile Pic Image Address">
+	  	<label for="14">Company Profile Pic Image Address:</label>	
+		<input id ="14" class="form-control" type="text" step ="any" name="picture" placeholder="Optional">
 	  </div>		  
 	 		  	  	
 	  <button type="submit" class="btn btn-primary">Submit</button>
