@@ -52,7 +52,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 					var tempSubCompletion = obj.subProcesses.buttonProcess.subCompletion;
 					var tempOverallCompletion = obj.overallCompletion;
 
-					var newSubCompletion = tempSubCompletion + (lotQuantity/subQuantity *100);
+					var newSubCompletion = tempSubCompletion + (lotQuantity/tempSubQuantity *100);
 					var newOverallCompletion = tempOverallCompletion + (newSubCompletion/100)*25;
 					var entryCost = tempSubCost * lotQuantity;
 
@@ -115,7 +115,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 					var tempSubCompletion = obj.subProcesses.collarProcess.subCompletion;
 					var tempOverallCompletion = obj.overallCompletion;
 
-					var newSubCompletion = tempSubCompletion + (lotQuantity/subQuantity *100);
+					var newSubCompletion = tempSubCompletion + (lotQuantity/tempSubQuantity *100);
 					var newOverallCompletion = tempOverallCompletion + (newSubCompletion/100)*25;
 					var entryCost = tempSubCost * lotQuantity;
 
@@ -178,7 +178,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 					var tempSubCompletion = obj.subProcesses.bodyProcess.subCompletion;
 					var tempOverallCompletion = obj.overallCompletion;
 
-					var newSubCompletion = tempSubCompletion + (lotQuantity/subQuantity *100);
+					var newSubCompletion = tempSubCompletion + (lotQuantity/tempSubQuantity *100);
 					var newOverallCompletion = tempOverallCompletion + (newSubCompletion/100)*25;
 					var entryCost = tempSubCost * lotQuantity;
 
@@ -240,7 +240,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 					var tempSubCompletion = obj.subProcesses.sleeveProcess.subCompletion;
 					var tempOverallCompletion = obj.overallCompletion;
 
-					var newSubCompletion = tempSubCompletion + (lotQuantity/subQuantity *100);
+					var newSubCompletion = tempSubCompletion + (lotQuantity/tempSubQuantity *100);
 					var newOverallCompletion = tempOverallCompletion + (newSubCompletion/100)*25;
 					var entryCost = tempSubCost * lotQuantity;
 
