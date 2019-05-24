@@ -35,6 +35,8 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 
 	var detectProcess = processId - lotId;
 
+	console.log("query done");
+
 
 	if( detectProcess == 1) {
 		Process.find({'lotId': lotId}, function(err, rawParentLot){
@@ -162,6 +164,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 			}
 		});	
 	} else if( detectProcess == 3) {
+		console.log("identified process 3");
 		Process.find({'lotId': lotId}, function(err, rawParentLot){
 			if(err){
 				console.log(err);
