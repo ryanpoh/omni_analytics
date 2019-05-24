@@ -26,15 +26,18 @@
 					      <th scope="col">Name</th>
 						  <th scope="col">Quan. /shirt</th>
 					      <th scope="col">Sub-Quan. </th>
-					      <th scope="col">Standard Time (min)</th>
-					      <th scope="col">Standard Cost (RM)</th>
-					      <th scope="col">Standard Sell (RM)</th>
-					      <th scope="col">Completion (%)</th>			      				      
+					      <th scope="col">Stan. Time (min)</th>
+					      <th scope="col">Stan. Cost (RM)</th>
+					      <th scope="col">Stan. Sell (RM)</th>
+					      <th scope="col">Sub-Completion (%)</th>			      				      
+					      <th scope="col">Overall Completion (%)</th>			      				      
 						</tr>
 					  </thead>
 					  <tbody>
 
-					 <% var f = foundLot.subProcesses; %> 	
+					 <% var f = foundLot.subProcesses; %> 
+
+		
 						<tr>
 						  <td><%= f.buttonProcess.subProcessId %></td>			      
 						  <td><%= f.buttonProcess.subProcessName %></td>			      
@@ -44,6 +47,7 @@
 						  <td><%= f.buttonProcess.subCost %></td>			      
 						  <td><%= f.buttonProcess.subSell %></td>			      
 						  <td><%= f.buttonProcess.subCompletion %></td>			      
+						  <td><%= f.buttonProcess.subCompletion * 0.25 %></td>			      
 						</tr>	
 						<tr>
 						  <td><%= f.collarProcess.subProcessId %></td>			      
@@ -54,6 +58,7 @@
 						  <td><%= f.collarProcess.subCost %></td>			      
 						  <td><%= f.collarProcess.subSell %></td>			      
 						  <td><%= f.collarProcess.subCompletion %></td>			      
+						  <td><%= f.collarProcess.subCompletion * 0.25 %></td>			      
 						</tr>	
 						<tr>
 						  <td><%= f.bodyProcess.subProcessId %></td>			      
@@ -64,6 +69,7 @@
 						  <td><%= f.bodyProcess.subCost %></td>			      
 						  <td><%= f.bodyProcess.subSell %></td>			      
 						  <td><%= f.bodyProcess.subCompletion %></td>			      
+						  <td><%= f.bodyProcess.subCompletion * 0.25 %></td>			      
 						</tr>	
 						<tr>
 						  <td><%= f.sleeveProcess.subProcessId %></td>			      
@@ -74,27 +80,30 @@
 						  <td><%= f.sleeveProcess.subCost %></td>			      
 						  <td><%= f.sleeveProcess.subSell %></td>			      
 						  <td><%= f.sleeveProcess.subCompletion %></td>			      
-						</tr>																								  
+						  <td><%= f.sleeveProcess.subCompletion * 0.25 %></td>			      
+						</tr>		
+
+
 	
 
 					  </tbody>
 					</table>				
 					<hr>
 				</div>
-<!-- 				<div class="row">
+				<div class="row">
 					<div class="col-lg-6" >
-						<canvas id="myChart" width="50%" height="50%"></canvas>
+						<canvas id="myChart4" width="50%" height="50%"></canvas>
 					</div>
 					<div class="col-lg-6" >
 						<canvas id="myChart2" width="50%" height="50%"></canvas>
 					</div>					
-				</div> -->
+				</div>
 				<div class="row">
 					<div class="col-lg-6" >
 						<canvas id="myChart3" width="50%" height="50%"></canvas>
 					</div>
 					<div class="col-lg-6" >
-						<canvas id="myChart4" width="50%" height="50%"></canvas>
+						<canvas id="myChart" width="50%" height="50%"></canvas>
 					</div>					
 				</div>					
 
@@ -106,18 +115,93 @@
 <script>
 
 
+var months = ["Feb", "March", "April", "May"];
 
-var months = ["Feb", "March", "April", "May"],
-	averagePerformance = [80,75,89];
-	
-
-
+var subCostArray = [<%= f.buttonProcess.subCost %>, <%= f.collarProcess.subCost %>, <%= f.bodyProcess.subCost %>, <%= f.sleeveProcess.subCost %>];
+var subSellArray = [<%= f.buttonProcess.subSell %>, <%= f.collarProcess.subSell %>, <%= f.bodyProcess.subSell %>, <%= f.sleeveProcess.subSell %>];
+var subCompletionArray = [<%= f.buttonProcess.subCompletion %>, <%= f.collarProcess.subCompletion %>, <%= f.bodyProcess.subCompletion %>, <%= f.sleeveProcess.subCompletion %>];
+console.log(subCompletionArray);
+var sub100 = [100, 100, 100, 100];
+var subLabel = ["Buttons", "Collars", "Body", "Sleeves"];
 
 	
 var unixTime = [];
 	for( var i = 0; i < performance.length; i++ ){
 		unixTime.push(i);
 	}
+	
+
+
+	var ctx = document.getElementById("myChart");
+	var myChart = new Chart(ctx, {
+	  type: 'line',
+	  data: {
+		labels: subLabel,
+		datasets: [
+		  { 
+			label: 'Cost Price (RM)',
+			backgroundColor: 'rgbA(47,60,126, 0.8)',      	
+			data: subCostArray,
+		  },		
+		  { 
+			label: 'Price Markup (RM)',
+			backgroundColor: 'rgba(251,234,235, 0.8)',     
+			data: subSellArray,
+		  }				  	
+		]
+	  },
+		options: { 
+			title: {
+				display: true,
+				text: "<%= foundLot.lotName %>'s Pricing Strategy",
+				fontSize: 15, 
+			
+		},
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			}
+		}		
+	});
+
+	var ctx2 = document.getElementById("myChart2");
+	var myChart2 = new Chart(ctx2, {
+	  type: 'horizontalBar',
+	  data: {
+		labels: subLabel,
+		datasets: [		
+		  { 
+			label: 'Target Completion (%)',
+			backgroundColor: 'rgba(60,26,91,0.75)',			
+
+			data: sub100,
+		  },
+		  { 
+			label: 'Relative Sub-Completion (%)',
+			backgroundColor: 'rgba(255,247,72,0.75)',
+			data: subCompletionArray,
+		  }      
+		]
+	  },
+		options: { 
+			title: {
+				display: true,
+				text: "<%= foundLot.lotName %> Sub-Progress (%)",
+				fontSize: 15, 
+			
+		},
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true
+					}
+				}]
+			}
+		}			
+	});
 	
 
 	
@@ -152,7 +236,11 @@ var unixTime = [];
 		}			
 	});	
 
-	var restOfPie = 100 - <%= f.sleeveProcess.subCompletion %> - <%= f.bodyProcess.subCompletion %> - <%= f.collarProcess.subCompletion %> - <%= f.buttonProcess.subCompletion %>;
+	var restOfPie = 100 - <%= foundLot.overallCompletion %>;
+	var overallSleeveCompletion = <%= f.sleeveProcess.subCompletion %> * 0.25 ;
+	var overallBodyCompletion = <%= f.bodyProcess.subCompletion %> * 0.25 ;
+	var overallCollarCompletion = <%= f.collarProcess.subCompletion %> * 0.25 ;
+	var overallButtonCompletion = <%= f.buttonProcess.subCompletion %> * 0.25 ;	
 
 	var ctx4 = document.getElementById("myChart4");
 	var myChart4 = new Chart(ctx4, {
@@ -170,7 +258,7 @@ var unixTime = [];
 								"rgba(0, 255, 0, 0.4)",
 							],
 
-			data: [restOfPie, <%= f.sleeveProcess.subCompletion %>, <%= f.bodyProcess.subCompletion %>,<%= f.collarProcess.subCompletion %>,<%= f.buttonProcess.subCompletion %>]
+			data: [restOfPie, overallSleeveCompletion, overallBodyCompletion, overallCollarCompletion, overallButtonCompletion]
 		  }      
 		]
 	  },

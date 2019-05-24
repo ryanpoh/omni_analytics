@@ -9,32 +9,33 @@ router.post('/lots', isLoggedIn, function(req,res){  //respond as POST eventhoug
 	var lotId =req.body.lotId;
 	var totalQuantity = req.body.totalQuantity;
 	var subSizeButton = req.body.subSizeButton;
-	var buttonTime = 20;
-	var buttonCost = 0.65;	
-	var collarTime = 30;
-	var collarCost = 0.85;	
-	var bodyTime = 15;
-	var bodyCost = 1.15;
-	var sleeveTime = 35;
-	var sleeveCost = 0.95;		
+	var buttonTime = req.body.buttonTime;
+	var buttonCost = req.body.buttonCost;	
+	var collarTime = req.body.collarTime;
+	var collarCost = req.body.collarCost;	
+	var bodyTime = req.body.bodyTime;
+	var bodyCost = req.body.bodyCost;
+	var sleeveTime = req.body.sleeveTime;
+	var sleeveCost = req.body.sleeveCost;	
+	var markupSell = req.body.markupSell;	
 
 
 	// FIXED DATA
-	var buttonSell = buttonCost * 1.5; //50% markup
+	var buttonSell = buttonCost * markupSell; //50% markup
 	var subQuantityButton = totalQuantity*subSizeButton;
 
 
-	var collarSell = collarCost * 1.5;
+	var collarSell = collarCost * markupSell;
 	var subSizeCollar = 1;
 	var subQuantityCollar = totalQuantity*subSizeCollar;		
 
 
 
-	var bodySell = bodyCost * 1.5;
+	var bodySell = bodyCost * markupSell;
 	var subSizeBody = 1;	
 	var subQuantityBody = totalQuantity*subSizeBody;			
 
-	var sleeveSell = sleeveCost * 1.5; 
+	var sleeveSell = sleeveCost * markupSell; 
 	var subSizeSleeve = 2;	
 	var subQuantitySleeve = totalQuantity*subSizeSleeve;	
 
