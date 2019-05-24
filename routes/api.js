@@ -14,24 +14,25 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 	// var processId = req.query.processId; 
 	// var timeTaken = req.query.timeTaken;
 	// var date = req.query.date;
+////ARDUINO
+	// var employeeID = req.body.employeeID;
+	// var lotId = req.body.lotId;
+	// var lotSize = req.body.lotSize;
+	// var lotQuantity = req.body.lotQuantity;
+	// var jobSheetNumber = req.body.jobSheetNumber;
+	// var processId = req.body.processId; 
+	// var timeTaken = req.body.timeTaken;
+	// var date = req.body.date;
 
-	var employeeID = req.body.employeeID;
-	var lotId = req.body.lotId;
-	var lotSize = req.body.lotSize;
-	var lotQuantity = req.body.lotQuantity;
-	var jobSheetNumber = req.body.jobSheetNumber;
-	var processId = req.body.processId; 
-	var timeTaken = req.body.timeTaken;
-	var date = req.body.date;
-
-	// var employeeID = req.query.employeeID;
-	// var lotId = req.query.lotId;
-	// var lotSize = req.query.lotSize;
-	// var lotQuantity = req.query.lotQuantity;
-	// var jobSheetNumber = req.query.jobSheetNumber;
-	// var processId = req.query.processId; 
-	// var timeTaken = req.query.timeTaken;
-	// var date = req.query.date;
+//POSTMAN
+	var employeeID = req.query.employeeID;
+	var lotId = req.query.lotId;
+	var lotSize = req.query.lotSize;
+	var lotQuantity = req.query.lotQuantity;
+	var jobSheetNumber = req.query.jobSheetNumber;
+	var processId = req.query.processId; 
+	var timeTaken = req.query.timeTaken;
+	var date = req.query.date;
 
 	var detectProcess = processId - lotId;
 
