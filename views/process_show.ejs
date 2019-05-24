@@ -2,8 +2,13 @@
 	
 	<div class = "container">
 			<div class="jumbotron">
-				<a  href="/lots/" class="btn btn-default btn-lg"><i class="fas fa-arrow-circle-left"> Go Back</i></a>
-				<a  href="/lots/<%= foundLot._id %>/edit" class="btn btn-default btn-lg"><i class="fas fa-edit"></i> Edit Profile</a>				
+				<div class="container" >
+					<a  href="/lots/" class="btn btn-default btn-lg"><i class="fas fa-arrow-circle-left"> Go Back</i></a>
+					<a  href="/lots/<%= foundLot._id %>/edit" class="btn btn-default btn-lg"><i class="fas fa-edit"></i> Edit Profile</a>									
+					<img align="right" src="https://digistorm-websites.s3-ap-southeast-2.amazonaws.com/cac-au-qld-27-website/content/Imported/Monash_Uni_Logo.jpg?mtime=20180928141803" class="img-rounded"  width="250px" height="75px">	
+				</div>
+
+				
 				<h1>Lot Profile</h1>
 				<div = class="row">
 					<div class="col-lg-4">
@@ -111,6 +116,85 @@
 			</div>
 
 		</div>
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<section class="team" id="sectionpadding">
+  <div class="container" id="homecontent">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="col-lg-12">
+          <!-- <h6 class="description">OUR TEAM</h6> -->
+		<h1 id=targetTitle><i class="fas fa-cut"></i></i> Sub-Processes <i class="fas fa-cut"></i> </h1>
+          <div class="row pt-md">
+			  
+			  
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
+              <div class="img-box">
+                <img src="https://static1.squarespace.com/static/51b35c55e4b062dc340ed13d/569cd8f11115e0984d28375b/569cd92e4bf118627e7b7738/1482336573936/De%2BOost%2BBespoke%2BTailoring%2B-%2BSky%2BBlue%2BOxford%2BDress%2BShirt%2BWith%2BClassic%2BCollar%2BBlack%2BButtons%2BOn%2BOrange%2BStitching%2BAnd%2BDouble%2BButton%2BBevelled%2BCuffs-3.jpg?format=300w" class="img-responsive">
+                <ul class="text-center">
+                  <a href="#"><li><i class="fa fa-facebook"></i></li></a>
+                  <a href="#"><li><i class="fa fa-twitter"></i></li></a>
+                  <a href="#"><li><i class="fa fa-linkedin"></i></li></a>
+                </ul>
+              </div>
+              <h1><%= f.buttonProcess.subProcessName %></h1>
+              <h2><%= f.buttonProcess.subProcessId %></h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
+              <div class="img-box">
+                <img src="http://3.bp.blogspot.com/-isd-dxZ2dnA/UjYtDIwElUI/AAAAAAAAGrs/30yeL_PGTxQ/s1600/Collar+Tutorial+Finished+1.jpg" class="img-responsive">
+                <ul class="text-center">
+                  <a href="#"><li><i class="fa fa-facebook"></i></li></a>
+                  <a href="#"><li><i class="fa fa-twitter"></i></li></a>
+                  <a href="#"><li><i class="fa fa-linkedin"></i></li></a>
+                </ul>
+              </div>
+              <h1><%= f.collarProcess.subProcessName %></h1>
+              <h2><%= f.collarProcess.subProcessId %></h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
+              <div class="img-box">
+                <img src="https://theamericanclassic.files.wordpress.com/2013/02/dsc_3272.jpg" class="img-responsive">
+                <ul class="text-center">
+                  <a href="#"><li><i class="fa fa-facebook"></i></li></a>
+                  <a href="#"><li><i class="fa fa-twitter"></i></li></a>
+                  <a href="#"><li><i class="fa fa-linkedin"></i></li></a>
+                </ul>
+              </div>
+              <h1><%= f.bodyProcess.subProcessName %></h1>
+              <h2><%= f.bodyProcess.subProcessId %></h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
+              <div class="img-box">
+                <img src="https://www.sewalongs.com/media/2012/10/07-15-baste.jpg" class="img-responsive">
+                <ul class="text-center">
+                  <a href="#"><li><i class="fa fa-facebook"></i></li></a>
+                  <a href="#"><li><i class="fa fa-twitter"></i></li></a>
+                  <a href="#"><li><i class="fa fa-linkedin"></i></li></a>
+                </ul>
+              </div>
+              <h1><%= f.sleeveProcess.subProcessName %></h1>
+              <h2><%= f.sleeveProcess.subProcessId %></h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>                                    
+			  
+			  
+			  
+			  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>	
 
 
 <script>
