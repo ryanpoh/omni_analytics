@@ -120,7 +120,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 					var newOverallCompletion = tempOverallCompletion + (newSubCompletion/100)*25;
 					var entryCost = tempSubCost * lotQuantity;
 
-					Process.findOneAndUpdate({'lotId':lotId}, {$set: {'subProcesses.collarProcess.subCompletion': newSubCompletion, 'overallCompletion':newOverallCompletion}}, function(err) {
+					Process.findOneAndUpdate({'lotId':lotId}, {$set: {'subProcesses.collarProcess.subCompletion': newSubCompletion, 'overallCompletion':newOverallCompletion}}, function(err, updatedLot) {
 
 						if(err){
 							console.log(err);
