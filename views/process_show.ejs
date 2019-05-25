@@ -19,7 +19,7 @@
 						<p>Lot ID: <span><%= foundLot.lotId %></span></p>
 						<p>Quantity (pcs.): <span><%= foundLot.totalQuantity %></span></p>
 						<p>Status: <span><%= foundLot.status %></span></p>						
-						<p>Completion: <span><%= (foundLot.overallCompletion).toFixed(2); %></span> %</p>	
+						<p>Overall Completion: <span><%= (foundLot.overallCompletion).toFixed(2); %></span> %</p>	
 					</div>						
 				</div>				
 
@@ -28,15 +28,15 @@
 					<table class="table">
 					  <thead>
 						<tr>
-					      <th scope="col">Sub-Process ID</th>
+					      <th scope="col">Sub-PID</th>
 					      <th scope="col">Name</th>
 						  <th scope="col">Quan. /shirt</th>
 					      <th scope="col">Sub-Quan. </th>
-					      <th scope="col">Stan. Time (min)</th>
-					      <th scope="col">Stan. Cost (RM)</th>
-					      <th scope="col">Stan. Sell (RM)</th>
-					      <th scope="col">Sub-Completion (%)</th>			      				      
-					      <th scope="col">Overall Completion (%)</th>			      				      
+					      <th scope="col">Std. Time (min)</th>
+					      <th scope="col">Std. Cost (RM)</th>
+					      <th scope="col">Std. Sell (RM)</th>
+					      <th scope="col">Sub-Completion (%)</th>
+					      <th scope="col">Overall Sub-Completion (%)</th>			      				      
 						</tr>
 					  </thead>
 					  <tbody>
@@ -274,7 +274,7 @@ var unixTime = [];
 		options: { 
 			title: {
 				display: true,
-				text: "<%= foundLot.lotName %> Sub-Progress (%)",
+				text: "<%= foundLot.lotName %> Sub-Completion Overview (%)",
 				fontSize: 15, 
 			
 		},
@@ -350,7 +350,7 @@ var unixTime = [];
 		options: { 
 			title: {
 				display: true,
-				text: "<%= foundLot.lotName %> Lot Progress (%)",
+				text: "<%= foundLot.lotName %> Lot Overall Completion (%)",
 				fontSize: 15, 
 			
 				},
