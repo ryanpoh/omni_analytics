@@ -8,7 +8,24 @@ var express = require('express'),
 	passportLocalMongoose = require('passport-local-mongoose');
 
 var User = require("./models/user");
+var Superuser = require("./models/superuser");
 var	Process = require('./models/process');
+
+
+	// var newSuperuser = {
+	// 				   username: "ryan", 
+	// 				   password: "skyline123", 
+	// 				  };
+
+	// Superuser.create( newSuperuser, function( err, newSuperuser){
+	// 		if(err){
+	// 			console.log(err);
+	// 		} else {
+	// 			//redirect BACK TO EMPLOYEE PAGE
+	// 			console.log('NEW SUPERUSER ADDED \n=================');
+	// 			console.log(newSuperuser);
+	// 		}
+	// 	});
 
 
 var employeeRoutes = require('./routes/employees'),
@@ -47,70 +64,50 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
-// UNCOMMENT FOR IN ADMIN APP REGISTRATION ///
 
-// User.register(new User({username: "admintest1"}), "skyline123", function(err,user){ //username and password
-// 	if(err){
-// 		console.log(err);
-// 	}
-// 	passport.authenticate("local");
-// 	console.log('REGISTRATION SUCCESSFUL');
-// });
+app.get('/superuser', function(req, res){ 
 
+	var superuser = req.query.su;
+	var superuserPassword = req.query.supw; 
+	var userCreate = req.query.uc;
+	var passwordCreate = req.query.pwc;
 
+	if (superuser != undefined){
+		Superuser.find( {'username': superuser }, function( err, superuserData){
 
+			if(err){
+				console.log(err);
+			} else {
 
-// Process.find({processName:'Manufacturing Paper', processCost:'0.85'}, function(err, processesData){ //{} means you take everything from DB
-// 	if(err){
-// 		console.log(err);
-// 	} else {
+				superuserData.forEach(function(superuser){
+					var string = JSON.stringify(superuser);
+					var obj = JSON.parse(string);
+					username = obj.username;
+					password = obj.password;
 
-// 		console.log(processesData);
-// 	}
-// });
+					if(superuser == obj.username & superuserPassword == obj.password){
 
+						User.register(new User({username: userCreate }), passwordCreate, function(err,user){ //username and password
+							if(err){
+								console.log(err);
+								res.send('SKYLINE BACKDOOR CONNECTION: SUCCESSFUL \n===========================\n\n---> STATUS: '+err);
+							}
+							passport.authenticate("local");
+							console.log('NEW USER REGISTRATION SUCCESSFUL' + "\n=======================\n username: " +userCreate +"\n password: "+passwordCreate);
+							res.send('SKYLINE BACKDOOR CONNECTION: SUCCESSFUL \n===========================\n\n---> STATUS: NEW USER REGISTRATION SUCCESSFUL' +
+									 "\n username: " +userCreate +"\n password: "+passwordCreate);
+						});
 
-// // UPDATING THE DATABASE
-// var processName = {'processName':'Manufacturing Paper'};
-
-
-// Process.findOneAndUpdate(processName, {processId:'100'}, {upsert:true}, function(err, foundProcess){ //{} means you take everything from DB
-// 	if(err){
-// 		console.log(err);
-// 	} else {
-
-// 		console.log(foundProcess);
-// 	}
-// });
-
-
-// // UPDATING NESTED OBJECTS
-// Process.findOneAndUpdate({'lotId':'600'}, {$set: {'subProcesses.buttonProcess.subCompletion': 0, 'overallCompletion':0}}, function(err, doc) {
-//     console.log("FIANLLLLLL"+"\n" +doc);
-// });
-
-
-
-					// Process.updateOne(  {'lotId': 600 }, 
-					// 					{'subProcesses.bodyProcess.subCompletion': 0, 'overallCompletion': 0},  
-					// 					function(err, res){
-
-					// 	if(err){
-					// 		console.log(err);
-					// 	} else {
-
-
-					// 		// console.log(res);
-
-					// 	}
-					//   // Updated at most one doc, `res.modifiedCount` contains the number
-					//   // of docs that MongoDB updated
-					// });
-
-
-	
-
-
+					} else {
+						res.send('SKYLINE BACKDOOR CONNECTION: FAILED \n===========================\n\n---> STATUS: SUPERUSER ACCESS DECLINED');
+					}	
+				});
+			}
+		});
+	} else {
+		res.send('SKYLINE BACKDOOR CONNECTION: FAILED \n===========================\n\n---> STATUS: SUPERUSER ACCESS DECLINED');
+	}	
+});
 
 
 // LOGIN
@@ -155,6 +152,5 @@ function isLoggedIn(req,res, next){
 
 // app.listen(3000, function(){   // DEBUG LOCALLY
 app.listen(process.env.PORT || 5000, function(){  //DEPLOYMENT
-
-	console.log('Skyline v9 server listening on port 5000');
+	console.log('Skyline v10 server listening on port 5000');
 });
