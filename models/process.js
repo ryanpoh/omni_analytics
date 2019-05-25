@@ -35,7 +35,7 @@ var processDataSchema = new mongoose.Schema({
 									subSell: Number,								
 									},
 					bodyProcess: 	{
-									subProcessName: {type: String, default: 'Shirt Body'} ,
+									subProcessName: {type: String, default: 'Body Stichting'} ,
 									subProcessId: Number, 
 									subSize: Number, 
 									subCompletion: Number, 
@@ -45,7 +45,7 @@ var processDataSchema = new mongoose.Schema({
 									subSell: Number,								
 									},
 					sleeveProcess: {
-									subProcessName: {type: String, default: 'Sleeves Stichting'} ,
+									subProcessName: {type: String, default: 'Sleeve Stichting'} ,
 									subProcessId: Number, 
 									subSize: Number, 
 									subCompletion: Number, 
