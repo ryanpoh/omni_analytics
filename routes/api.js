@@ -8,7 +8,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 
 
 // ////ARDUINO
-// 	var employeeId = req.body.employeeId;
+// 	var employeeID = req.body.employeeID;
 // 	var lotId = req.body.lotId;
 // 	var lotSize = req.body.lotSize;
 // 	var lotQuantity = req.body.lotQuantity;
@@ -16,7 +16,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 // 	var timeTaken = req.body.timeTaken;
 
 ////POSTMAN
-	var employeeId = req.query.employeeId;
+	var employeeID = req.query.employeeID;
 	var lotId = req.query.lotId;
 	var lotSize = req.query.lotSize;
 	var lotQuantity = req.query.lotQuantity;
@@ -55,7 +55,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 
 							// CREATING A NEW DATA ENTRY AND SAVING IT TO DB
 							var newLot = {	
-								employeeId: employeeId,
+								employeeID: employeeID,
 								lotId: lotId, 
 								lotSize: lotSize, 
 								lotQuantity: lotQuantity,
@@ -115,7 +115,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 
 							// CREATING A NEW DATA ENTRY AND SAVING IT TO DB
 							var newLot = {	
-								employeeId: employeeId,
+								employeeID: employeeID,
 								lotId: lotId, 
 								lotSize: lotSize, 
 								lotQuantity: lotQuantity,
@@ -178,7 +178,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 
 							// CREATING A NEW DATA ENTRY AND SAVING IT TO DB
 							var newLot = {	
-								employeeId: employeeId,
+								employeeID: employeeID,
 								lotId: lotId, 
 								lotSize: lotSize, 
 								lotQuantity: lotQuantity,
@@ -240,7 +240,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 
 							// CREATING A NEW DATA ENTRY AND SAVING IT TO DB
 							var newLot = {	
-								employeeId: employeeId,
+								employeeID: employeeID,
 								lotId: lotId, 
 								lotSize: lotSize, 
 								lotQuantity: lotQuantity,
