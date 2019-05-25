@@ -24,7 +24,7 @@ router.post('/employees', isLoggedIn, function(req,res){  //respond as POST even
 	var employeeID = req.body.employeeID;
 	var position = req.body.position;
 	var department = req.body.department;
-	var baseSalary = req.baseSalary;
+	var baseSalary = req.body.baseSalary;
 	var picture = req.body.picture;	
 	var newEmployee = {
 					   firstName: firstName, 
