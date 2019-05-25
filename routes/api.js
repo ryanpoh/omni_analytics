@@ -14,14 +14,22 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 	var lotQuantity = req.body.lotQuantity;
 	var processId = req.body.processId; 
 	var timeTaken = req.body.timeTaken;
+	var startTime = req.body.startTime;
+	var day = req.body.day;
+	var month = req.body.month;
+	var year = req.body.year;
 
 // ////POSTMAN
-// 	var employeeID = req.query.employeeID;
-// 	var lotId = req.query.lotId;
-// 	var lotSize = req.query.lotSize;
-// 	var lotQuantity = req.query.lotQuantity;
-// 	var processId = req.query.processId; 
-// 	var timeTaken = req.query.timeTaken;
+	// var employeeID = req.query.employeeID;
+	// var lotId = req.query.lotId;
+	// var lotSize = req.query.lotSize;
+	// var lotQuantity = req.query.lotQuantity;
+	// var processId = req.query.processId; 
+	// var timeTaken = req.query.timeTaken;
+	// var startTime = req.query.startTime;
+	// var day = req.query.day;
+	// var month = req.query.month;
+	// var year = req.query.year;
 
 	var detectProcess = processId - lotId;
 
@@ -62,6 +70,10 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 								processId: processId,
 								timeTaken: timeTaken,
 								entryCost: entryCost,
+								startTime: startTime;
+								day: day;
+								month: month;
+								year: year;								
 							};
 
 							console.log(newLot);
@@ -122,7 +134,10 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 								processId: processId,
 								timeTaken: timeTaken,
 								entryCost: entryCost,
-					
+								startTime: startTime;
+								day: day;
+								month: month;
+								year: year;							
 							};
 
 							console.log(newLot);
@@ -185,7 +200,10 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 								processId: processId,
 								timeTaken: timeTaken,
 								entryCost: entryCost,
-							
+								startTime: startTime;
+								day: day;
+								month: month;
+								year: year;									
 							};
 
 							console.log(newLot);
@@ -247,6 +265,10 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 								processId: processId,
 								timeTaken: timeTaken,
 								entryCost: entryCost,
+								startTime: startTime;
+								day: day;
+								month: month;
+								year: year;										
 							};
 
 							console.log(newLot);

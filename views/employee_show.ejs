@@ -30,11 +30,12 @@
 					  <thead>
 						<tr>
 				      <th scope="col">#</th>
-				      <th scope="col">Month</th>
+				      <th scope="col">Date</th>
 				      <th scope="col">Lot No.</th>
 					  <th scope="col">Lot Size</th>
 				      <th scope="col">Lot Quan. (pcs.)</th>
 				      <th scope="col">Sub-PID</th>
+				      <th scope="col">Start Time</th>
 				      <th scope="col">Duration (min)</th>
 				      <th scope="col">Std. Time (min)</th>
 				      <th scope="col">Entry Cost (RM)</th>
@@ -54,11 +55,12 @@
 					<% lots.forEach(function(lot, i){ %> 
 						<tr>
 						  <th scope="row"><%= i %></th>
-						  <td>May</td>
+						  <td><%= lot.day %>/<%= lot.month %>/<%= lot.year %></td>
 						  <td><%= lot.lotId %></td>
 						  <td><%= lot.lotSize %></td>
 						  <td><%= lot.lotQuantity %></td>
 						  <td><%= lot.processId %></td>
+						  <td><%= lot.startTime %> hrs</td>
 						  <td><%= lot.timeTaken %></td>
 						  <td><%= processTime[i] %></td>				      
 						  <td><%= entryCost[i].toFixed(2); %></td>				      
@@ -86,11 +88,12 @@
 					 <% }); %>						  
 						<tr>
 						  <th scope="row"><%= index + 1 %></th>
-						  <td>April</td>
+						  <td>15/04/19</td>
 						  <td>500</td>
 						  <td>L</td>
 						  <td>68</td>
 						  <td>501</td>	
+						  <td>1045 hrs</td>	
 						  <td>22</td>				      
 						  <td>20</td>				      
 						  <td>44.20</td>				      
@@ -98,22 +101,24 @@
 						</tr>
 						<tr>
 						  <th scope="row"><%= index + 2 %></th>
-						  <td>March</td>
+						  <td>11/03/19</td>
 						  <td>600</td>
 						  <td>S</td>
 						  <td>47</td>
 						  <td>603</td>	
+						  <td>1305 hrs</td>	
 						  <td>19</td>				      
 						  <td>15</td>				      
 						  <td>54.05</td>				      
 						  <td>75</td>				      
 						</tr>
 						  <th scope="row"><%= index + 3 %></th>
-						  <td>Feb</td>
+						  <td>23/02/19</td>
 						  <td>500</td>
 						  <td>XS</td>
 						  <td>41</td>
 						  <td>503</td>	
+						  <td>1430 hrs</td>	
 						  <td>18</td>				      
 						  <td>15</td>				      
 						  <td>37.15</td>				      
@@ -221,7 +226,7 @@ var unixTime = [];
 		options: { 
 			title: {
 				display: true,
-				text: "<%= foundEmployee.firstName %>'s Efficiency Today",
+				text: "<%= foundEmployee.firstName %>'s Efficiency This Month",
 				fontSize: 15, 
 			
 		},
@@ -256,7 +261,7 @@ var unixTime = [];
 		options: { 
 			title: {
 				display: true,
-				text: "<%= foundEmployee.firstName %>'s Sub-Process Distribution Today",
+				text: "<%= foundEmployee.firstName %>'s Sub-Process Distribution This Month",
 				fontSize: 15, 
 			
 				},

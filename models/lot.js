@@ -11,6 +11,10 @@ var lotDataSchema = new mongoose.Schema({
 	processId: Number,
 	timeTaken: Number,
 	entryCost: Number,
+	startTime: String;
+	day: String;
+	month: String;
+	year: String;			
 	date: {type: Number, default: Date.now()}
 });
 
