@@ -10,7 +10,7 @@ var processDataSchema = new mongoose.Schema({
 	estimatedCost: Number,
 	estimatedSell: Number,
 	picture: {type: String, 
-			  default: "https://cdn1.iconfinder.com/data/icons/business-power-4/48/business_avatar_company_hierarchy_level_position_post-512.png"
+			  default: "https://png.pngtree.com/svg/20170218/company_573791.png"
 			 },
 	date: {type: Number, default: Date.now()},
 	subProcesses: {
