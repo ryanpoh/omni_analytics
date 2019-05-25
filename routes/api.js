@@ -7,21 +7,21 @@ var	Process = require('../models/process');
 router.post('/api/update', function(req,res){  //respond as POST eventhough same route. USING REST API
 
 
-// ////ARDUINO
-// 	var employeeID = req.body.employeeID;
-// 	var lotId = req.body.lotId;
-// 	var lotSize = req.body.lotSize;
-// 	var lotQuantity = req.body.lotQuantity;
-// 	var processId = req.body.processId; 
-// 	var timeTaken = req.body.timeTaken;
+////ARDUINO
+	var employeeID = req.body.employeeID;
+	var lotId = req.body.lotId;
+	var lotSize = req.body.lotSize;
+	var lotQuantity = req.body.lotQuantity;
+	var processId = req.body.processId; 
+	var timeTaken = req.body.timeTaken;
 
-////POSTMAN
-	var employeeID = req.query.employeeID;
-	var lotId = req.query.lotId;
-	var lotSize = req.query.lotSize;
-	var lotQuantity = req.query.lotQuantity;
-	var processId = req.query.processId; 
-	var timeTaken = req.query.timeTaken;
+// ////POSTMAN
+// 	var employeeID = req.query.employeeID;
+// 	var lotId = req.query.lotId;
+// 	var lotSize = req.query.lotSize;
+// 	var lotQuantity = req.query.lotQuantity;
+// 	var processId = req.query.processId; 
+// 	var timeTaken = req.query.timeTaken;
 
 	var detectProcess = processId - lotId;
 
