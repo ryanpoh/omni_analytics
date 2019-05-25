@@ -72,7 +72,7 @@ app.get('/superuser', function(req, res){
 	var userCreate = req.query.uc;
 	var passwordCreate = req.query.pwc;
 
-	if (superuser != undefined){
+	if (superuser == "ryan"){
 		Superuser.find( {'username': superuser }, function( err, superuserData){
 
 			if(err){
