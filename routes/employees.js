@@ -26,6 +26,7 @@ router.post('/employees', isLoggedIn, function(req,res){  //respond as POST even
 	var department = req.body.department;
 	var baseSalary = req.body.baseSalary;
 	var picture = req.body.picture;	
+	var featured = req.body.featured;	
 	var newEmployee = {
 					   firstName: firstName, 
 					   lastName: lastName, 
@@ -34,6 +35,7 @@ router.post('/employees', isLoggedIn, function(req,res){  //respond as POST even
 					   department: department,
 					   baseSalary: baseSalary,
 					   picture: picture,
+					   featured: featured,
 					  };
 	// CREATING A NEW DATA ENTRY AND SAVING IT TO DB
 	Employee.create( newEmployee, function( err, newEmployee){

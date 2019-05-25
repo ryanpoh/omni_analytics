@@ -40,8 +40,8 @@ router.post('/lots', isLoggedIn, function(req,res){  //respond as POST eventhoug
 	var subQuantitySleeve = totalQuantity*subSizeSleeve;	
 
 	totalSubQuantity = subQuantityButton+subQuantityCollar+subQuantityBody+subQuantitySleeve;			
-	estimatedCost = buttonCost*subQuantityButton + collarCost*subQuantityCollar + bodyCost*subQuantityBody + buttonSleeve*subQuantitySleeve;
-	estimatedSell = buttonSell*subQuantityButton + collarSell*subQuantityCollar + bodySell*subQuantityBody + buttonSell*subQuantitySleeve;
+	estimatedCost = buttonCost*subQuantityButton + collarCost*subQuantityCollar + bodyCost*subQuantityBody + sleeveCost*subQuantitySleeve;
+	estimatedSell = buttonSell*subQuantityButton + collarSell*subQuantityCollar + bodySell*subQuantityBody + sleeveSell*subQuantitySleeve;
 
 
 	var newProcess = {	
