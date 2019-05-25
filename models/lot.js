@@ -4,7 +4,10 @@ var lotDataSchema = new mongoose.Schema({
 	lotId: Number, 
 	lotSize: String, 
 	lotQuantity: Number,
-	jobSheetNumber: Number,
+	jobSheetNumber: {
+						type: Number, 
+			  			default: 0,
+			  		},
 	processId: Number,
 	timeTaken: Number,
 	entryCost: Number,
