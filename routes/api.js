@@ -122,7 +122,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 								processId: processId,
 								timeTaken: timeTaken,
 								entryCost: entryCost,
-								date: date,
+					
 							};
 
 							console.log(newLot);
@@ -185,7 +185,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 								processId: processId,
 								timeTaken: timeTaken,
 								entryCost: entryCost,
-								date: date,
+							
 							};
 
 							console.log(newLot);
@@ -247,7 +247,6 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 								processId: processId,
 								timeTaken: timeTaken,
 								entryCost: entryCost,
-								date: date,
 							};
 
 							console.log(newLot);
