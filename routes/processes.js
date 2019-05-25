@@ -53,8 +53,7 @@ router.post('/lots', isLoggedIn, function(req,res){  //respond as POST eventhoug
 		status: 'Active',
 		totalSubQuantity: totalSubQuantity,		
 		estimatedCost: estimatedCost,		
-		estimatedSell: estimatedSell,		
-		picture: picture,		
+		estimatedSell: estimatedSell,				
 		subProcesses: {
 						buttonProcess: {
 										subProcessId: +lotId + +1, //unary operation
