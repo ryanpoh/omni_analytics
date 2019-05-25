@@ -72,15 +72,16 @@ app.get('/superuser', function(req, res){
 	var userCreate = req.query.uc;
 	var passwordCreate = req.query.pwc;
 
-	if (superuser == "ryan"){
+	if (superuser != undefined){
+		
 		Superuser.find( {'username': superuser }, function( err, superuserData){
 
 			if(err){
 				console.log(err);
 			} else {
 
-				superuserData.forEach(function(superuser){
-					var string = JSON.stringify(superuser);
+				superuserData.forEach(function(foundSuperuser){
+					var string = JSON.stringify(foundSuperuser);
 					var obj = JSON.parse(string);
 					username = obj.username;
 					password = obj.password;
@@ -105,6 +106,7 @@ app.get('/superuser', function(req, res){
 			}
 		});
 	} else {
+
 		res.send('SKYLINE BACKDOOR CONNECTION: FAILED \n===========================\n\n---> STATUS: SUPERUSER ACCESS DECLINED');
 	}	
 });
