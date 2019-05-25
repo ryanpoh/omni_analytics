@@ -18,6 +18,7 @@ router.post('/lots', isLoggedIn, function(req,res){  //respond as POST eventhoug
 	var sleeveTime = req.body.sleeveTime;
 	var sleeveCost = req.body.sleeveCost;	
 	var markupSell = req.body.markupSell;	
+	var picture = req.body.picture;	
 
 
 	// FIXED DATA
@@ -54,6 +55,7 @@ router.post('/lots', isLoggedIn, function(req,res){  //respond as POST eventhoug
 		totalSubQuantity: totalSubQuantity,		
 		estimatedCost: estimatedCost,		
 		estimatedSell: estimatedSell,		
+		picture: picture,		
 		subProcesses: {
 						buttonProcess: {
 										subProcessId: +lotId + +1, //unary operation
