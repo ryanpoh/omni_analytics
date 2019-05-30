@@ -81,8 +81,6 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 									if(err){
 										console.log(err);
 									} else {
-										// console.log('NEW LOT ADDED \n=================');
-										// console.log(newLot);
 										res.send('\n DATABASE ARDUINO LOT UPDATE SUCESSFULL' + "=====================\n"+newLot +
 											"\n\n DATABASE PROCESS LOT UPDATE SUCCESSFUL (BELOW IS PREVIOUS RECORD. MONGODB BUGGED)"  + "=====================\n"+updatedLot);
 
@@ -90,8 +88,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 							});	
 
 						}
-					  // Updated at most one doc, `res.modifiedCount` contains the number
-					  // of docs that MongoDB updated
+
 					});
 
 
@@ -145,8 +142,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 									if(err){
 										console.log(err);
 									} else {
-										// console.log('NEW LOT ADDED \n=================');
-										// console.log(newLot);
+
 										res.send('\n DATABASE ARDUINO LOT UPDATE SUCESSFULL' + "=====================\n"+newLot +
 										"\n\n DATABASE PROCESS LOT UPDATE SUCCESSFUL (BELOW IS PREVIOUS RECORD. MONGODB BUGGED)"  + "=====================\n"+updatedLot);
 
@@ -211,8 +207,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 									if(err){
 										console.log(err);
 									} else {
-										// console.log('NEW LOT ADDED \n=================');
-										// console.log(newLot);
+
 										res.send('\n DATABASE ARDUINO LOT UPDATE SUCESSFULL' + "=====================\n"+newLot +
 											"\n\n DATABASE PROCESS LOT UPDATE SUCCESSFUL (BELOW IS PREVIOUS RECORD. MONGODB BUGGED)"+updatedLot);
 									}
@@ -276,8 +271,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 									if(err){
 										console.log(err);
 									} else {
-										// console.log('NEW LOT ADDED \n=================');
-										// console.log(newLot);
+
 										res.send('\n DATABASE ARDUINO LOT UPDATE SUCESSFULL' + "=====================\n"+newLot +
 											"\n\n DATABASE PROCESS LOT UPDATE SUCCESSFUL (BELOW IS PREVIOUS RECORD. MONGODB BUGGED)"+updatedLot);
 
@@ -285,8 +279,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 							});	
 
 						}
-					  // Updated at most one doc, `res.modifiedCount` contains the number
-					  // of docs that MongoDB updated
+
 					});
 
 

@@ -12,22 +12,6 @@ var Superuser = require("./models/superuser");
 var	Process = require('./models/process');
 
 
-	// var newSuperuser = {
-	// 				   username: "ryan", 
-	// 				   password: "skyline123", 
-	// 				  };
-
-	// Superuser.create( newSuperuser, function( err, newSuperuser){
-	// 		if(err){
-	// 			console.log(err);
-	// 		} else {
-	// 			//redirect BACK TO EMPLOYEE PAGE
-	// 			console.log('NEW SUPERUSER ADDED \n=================');
-	// 			console.log(newSuperuser);
-	// 		}
-	// 	});
-
-
 var employeeRoutes = require('./routes/employees'),
 	processRoutes = require('./routes/processes'),
 	indexRoutes = require('./routes/index'),

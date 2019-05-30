@@ -168,67 +168,7 @@ router.get('/lots/:lotDataId',isLoggedIn, function(req, res){ //SHOW RESTFUL API
 			console.log(err);
 		} else {
 
-			res.render("process_show", {foundLot: foundLot});
-
-			// objToPass.foundEmployee = foundEmployee; 
-			// var string = JSON.stringify(foundEmployee);
-			// var obj = JSON.parse(string);
-			// var employeeId = obj.employeeID;
-			
-			// Lot.find({employeeID: employeeId}, function(err, foundLots){ //{} means you take everything from DB
-			// 	if(err){
-			// 		console.log(err);
-			// 	} else {
-					
-			// 		objToPass.lots = foundLots;    //full RAW lot Database file from DB	
-			// 		foundLots.forEach(function(individualLot){
-			// 			var string = JSON.stringify(individualLot);
-			// 			var obj = JSON.parse(string);
-			// 			processesIdLot.push(obj.processId);
-			// 			timeTakenLot.push(obj.timeTaken);
-			// 		});
-
-
-			// 		Process.find({}, function(err, processesData){ //{} means you take everything from DB
-			// 			if(err){
-			// 				console.log(err);
-			// 			} else {
-
-			// 				processesData.forEach(function(individualProcess){
-			// 					var string = JSON.stringify(individualProcess);
-			// 					var obj = JSON.parse(string);
-			// 					processesIdDb.push(obj.processId);  //[100] - no duplicates
-			// 					processesTimeDb.push(obj.processTime);
-			// 				});	
-
-			// 				processesIdLot.forEach(function(processIdLot, i){
-
-			// 					processesIdDb.forEach(function(processIdDb, j){
-
-			// 						if (processIdLot == processIdDb){
-			// 							respectiveProcessTime.push(processesTimeDb[j]);
-			// 							// console.log( 'time taken = ' + timeTakenLot[j]);
-			// 							// console.log('processesTimeDb =' +  processesTimeDb[j]);
-			// 							performance.push(Math.round(100 - ((timeTakenLot[i] - processesTimeDb[j]) / processesTimeDb[j] *100)));
-			// 							// console.log('CALCULATION =' + performance);
-			// 						} else {
-			// 							// console.log("No matches"); //why does it output no match but still get correct output
-			// 						}											 
-			// 					});
-
-
-			// 				});
-
-
-
-			// 				// res.render("process_show", objToPass);
-			// 			}	
-
-			// 		});	
-					
-
-			// 	}
-			// });				
+			res.render("process_show", {foundLot: foundLot});			
 			
 		}	
 	});

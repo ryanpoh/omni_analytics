@@ -64,9 +64,6 @@ router.get('/home', isLoggedIn, function(req, res){
 					timeTakenLot.push(obj.timeTaken);
 					entryCostLot.push(obj.entryCost);
 				});
-			// console.log(processesIdLot);
-			// console.log(timeTakenLot);
-			// console.log('timeTakenLot' + timeTakenLot);
 			
 			Process.find({}, function(err, processesData){ //{} means you take everything from DB
 				if(err){
@@ -107,11 +104,8 @@ router.get('/home', isLoggedIn, function(req, res){
 								respectiveProcessCost.push(processesCostDb[j]);
 								respectiveProcessSell.push(processesSellDb[j]);
 								
-								// console.log( 'time taken = ' + timeTakenLot[j]);
-								// console.log('processesTimeDb =' +  processesTimeDb[j]);
 								performance.push(Math.round(100 - ((timeTakenLot[i] - processesTimeDb[j]) / processesTimeDb[j] *100)));
 	
-								// console.log('CALCULATION =' + performance);
 							} else {
 								// console.log("No matches"); //why does it output no match but still get correct output
 							}											 
@@ -120,13 +114,6 @@ router.get('/home', isLoggedIn, function(req, res){
 
 					});
 
-
-					// console.log('STAFF PROCESS ID'+ processesIdLot );
-					// console.log('STAFF TIME TAKEN =' + timeTakenLot);
-					// console.log('RESPECTIVE PROCESS TIME =' + respectiveProcessTime);
-					// console.log('ProcessCost TIME =' + respectiveProcessCost);
-					// console.log('PERFORMANCE =' + performance);
-					
 
 					res.render('home', objToPass);	
 				}	

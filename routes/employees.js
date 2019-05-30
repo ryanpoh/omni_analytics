@@ -165,10 +165,7 @@ router.get('/employees/:employeeDataId',isLoggedIn, function(req, res){ //SHOW R
 
 									if (processIdLot == processIdDb){
 										respectiveProcessTime.push(processesTimeDb[j]);
-										// console.log( 'time taken = ' + timeTakenLot[j]);
-										// console.log('processesTimeDb =' +  processesTimeDb[j]);
 										performance.push(Math.round(100 - ((timeTakenLot[i] - processesTimeDb[j]) / processesTimeDb[j] *100)));
-										// console.log('CALCULATION =' + performance);
 									} else {
 										// console.log("No matches"); //why does it output no match but still get correct output
 									}											 
