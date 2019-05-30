@@ -152,7 +152,7 @@ function isLoggedIn(req,res, next){
 
 
 
-app.listen(3000, function(){   // DEBUG LOCALLY
-// app.listen(process.env.PORT || 5000, function(){  //DEPLOYMENT
+// app.listen(3000, function(){   // DEBUG LOCALLY
+app.listen(process.env.PORT || 5000, function(){  //DEPLOYMENT
 	console.log('Skyline v10 server listening on port 5000');
 });
