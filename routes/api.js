@@ -31,7 +31,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 
 	var timeNow = new Date();
 	var newTime = new Date(timeNow - timeTaken*60000 - 12*60*60000);
-	var startTime = newTime.getHours().toString() + newTime.getMinutes().toString();
+	var startTime = "1440";
 
 
 
