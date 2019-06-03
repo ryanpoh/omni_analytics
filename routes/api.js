@@ -14,28 +14,15 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 	var lotQuantity = req.body.lotQuantity;
 	var processId = req.body.processId; 
 	var timeTaken = req.body.timeTaken;
-	// var startTime = req.body.startTime;
-	// var day = req.body.day;
-	// var month = req.body.month;
-	// var year = req.body.year;
-
 
 	var dateObj = new Date();
 	var day = dateObj.getDate().toString();
 	var month = "0" + (dateObj.getMonth()).toString();
 	var year = (dateObj.getYear() +1900).toString().split("0",2)[1];
 
-	// var fullYear = (dateObj.getFullYear()).toString;
-	// String [] fullYearParts = fullYear.split("0");
-	// String year = fullYearParts[1]; 
-
 	var timeNow = new Date();
 	var newTime = new Date(timeNow.getMinutes() - timeTaken*60000);
 	var startTime = newTime.getHours()+newTime.getMinutes();
-
-
-
-
 
 
 // ////POSTMAN
@@ -300,9 +287,6 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 						}
 
 					});
-
-
-
 
 				});			
 			}
