@@ -17,7 +17,7 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 
 	var dateObj = new Date();
 	var day = dateObj.getDate().toString();
-	var month = "0" + (dateObj.getMonth()).toString();
+	var month = "0" + (dateObj.getMonth() + 1).toString();
 	var year = (dateObj.getYear() +1900).toString().split("0",2)[1];
 
 	var timeNow = new Date();
