@@ -20,6 +20,8 @@ router.post('/api/update', function(req,res){  //respond as POST eventhough same
 	var month = "0" + (dateObj.getMonth() + 1).toString();
 	var year = (dateObj.getYear() +1900).toString().split("0",2)[1];
 
+
+	// need to fix. wrong time
 	var timeNow = new Date();
 	var newTime = new Date(timeNow.getMinutes() - timeTaken*60000);
 	var startTime = newTime.getHours()+newTime.getMinutes();
