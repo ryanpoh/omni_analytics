@@ -84,16 +84,20 @@ h6.description{
 	transition: all 0.3s ease-in-out 0s;
 }
 .img-box a:hover li{
-	border-color: #fff;
-	color: #88C425;
+	color: #88C425; 
+	border-color: #fff; 
 }
 a{
-    color:#88C425;
+	/* color:#88C425; */
+	color: rgba(255,255,255,.9);
 }
 a:hover{
-    text-decoration:none;
-    color:#519548;
-}
+	/*color:#519548; */
+	background: rgba(255,255,255,.15) !important;
+	color: rgba(255,255,255,.9)
+} 
+
+
 i.red{
     color:#BC0213;
 }
