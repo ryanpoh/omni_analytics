@@ -9,9 +9,9 @@ body {
   color: white;
 }
 
-#content {
+#landingcontent {
   text-align: center;
-  padding-top: 15%;
+  padding-top: 23%;
   text-shadow: 1px solid rgba(0, 0, 0, 0.2), 0px 8px 13px rgba(0, 0, 0, 0.1),
     0px 18px 23px rgba(0, 0, 0, 0.1);
 }
@@ -27,6 +27,13 @@ body {
     rgb(32, 167, 172) 89%
   ) !important;
 }
+
+
+
+#landingcontent {
+  margin-top: -200px !important;
+}
+
 #analytics-icon {
 	margin-right: 7px;
 }

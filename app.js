@@ -48,6 +48,16 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
+// User.register(new User({username: 'insert username' }), 'insert password', function(err,user){ //username and password
+// 	if(err){
+// 		console.log(err);
+// 		res.send('OMNI BACKDOOR CONNECTION: SUCCESSFUL \n===========================\n\n---> STATUS: '+err);
+// 	}
+// 	passport.authenticate("local");
+// 	console.log('NEW USER REGISTRATION SUCCESSFUL');
+
+// });
+
 
 app.get('/superuser', function(req, res){ 
 
@@ -137,7 +147,7 @@ function isLoggedIn(req,res, next){
 
 
 
-//app.listen(3000, function(){   // DEBUG LOCALLY
-app.listen(process.env.PORT || 5000, function(){  //DEPLOYMENT
+app.listen(3000, function(){   // DEBUG LOCALLY
+//app.listen(process.env.PORT || 5000, function(){  //DEPLOYMENT
 	console.log('Skyline v10 server listening on port 5000');
 });
