@@ -39,13 +39,90 @@
     <div class="col-lg-6">
       <canvas id="progressChart" width="50%" height="50%"></canvas>
 
-
-      <form id="volt-form" action="/machines" method="POST">
-         <input id ="1" type="text" placeholder="" name="volt">
+      <!-- <form id="volt-form" action="/machines" method="POST">
+        <input id="1" type="text" placeholder="" name="volt" />
         <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+      </form> -->
 
-      <script src="/js/machine_chart.js"></script>
+      <script>
+
+      var voltArray = [<%= voltArray %>] //the [] is removed by default, so we have to add it back
+      console.log(voltArray)
+        
+      
+
+        var months = ['Feb', 'March', 'April', 'May'];
+        var averagePerformance = [80, 75, 89, 99];
+
+        machineData = {
+          type: 'line',
+          data: {
+            labels: months,
+            datasets: [
+              {
+                label: 'Employee Performance',
+                backgroundColor: 'rgba(121, 61, 244, 0.5)',
+                data: averagePerformance
+              }
+            ]
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'Machine 1 Monthly Average Performance',
+              fontSize: 15
+            },
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true
+                  }
+                }
+              ]
+            }
+          }
+        };
+
+        // METHODS
+        function addData(chart, label, data) {
+          chart.data.labels.push(label);
+          chart.data.datasets.forEach(dataset => {
+            dataset.data.push(data);
+          });
+          chart.update();
+        }
+
+        function removeData(chart) {
+          chart.data.labels.pop();
+          chart.data.datasets.forEach(dataset => {
+            dataset.data.pop();
+          });
+          chart.update();
+        }
+
+        // Draw initial graph
+        var ctx = document.getElementById('progressChart').getContext('2d');
+        let progressChart = new Chart(ctx, machineData);
+        voltArray.forEach((data) => {
+          addData(progressChart, 'June', data);
+        })
+        
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        // Dynamic update
+        var pusher = new Pusher('5ed5a1f25586a0760edb', {
+          cluster: 'ap1',
+          forceTLS: true
+        });
+        // Dynamic Update
+        var channel = pusher.subscribe('machine-1-channel');
+        channel.bind('machine-1-sync', function(data) {
+          addData(progressChart, 'June', data.volt);
+        });
+
+      </script>
     </div>
   </div>
 </div>

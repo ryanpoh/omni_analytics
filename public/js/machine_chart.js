@@ -2,7 +2,6 @@
 
 // };
 
-
 // const form = document.getElementById('volt-form');
 
 // form.addEventListener('submit', e => {
@@ -23,6 +22,19 @@
 
 //   e.preventDefault();
 // });
+
+// MachineData.find().then(machineDbData => res.json({success: true,
+// machineDbData: machineDbData }))
+
+// fetch('http://localhost:3000/machines')
+//   .then(res => res.json())
+//   .then(data => {
+//     const machineDbData = data.machineDbData
+
+
+//   });
+var machineDbData = JSON.parse(document.getElementsByName('dataFromServer')[0].machineDbData)
+console.log(machineDbData)
 
 var months = ['Feb', 'March', 'April', 'May'];
 var averagePerformance = [80, 75, 89, 99];
@@ -57,6 +69,7 @@ machineData = {
   }
 };
 
+// METHODS
 function addData(chart, label, data) {
   chart.data.labels.push(label);
   chart.data.datasets.forEach(dataset => {
@@ -65,19 +78,27 @@ function addData(chart, label, data) {
   chart.update();
 }
 
+function removeData(chart) {
+  chart.data.labels.pop();
+  chart.data.datasets.forEach(dataset => {
+    dataset.data.pop();
+  });
+  chart.update();
+}
+
+// Draw initial graph
 var ctx = document.getElementById('progressChart').getContext('2d');
-//new Chart(ctx).Line(machineData);
-
 let progressChart = new Chart(ctx, machineData);
-
+addData(progressChart, 'June', machineDbData.volt);
 // Enable pusher logging - don't include this in production
 Pusher.logToConsole = true;
 
+// Dynamic update
 var pusher = new Pusher('5ed5a1f25586a0760edb', {
   cluster: 'ap1',
   forceTLS: true
 });
-
+// Dynamic Update
 var channel = pusher.subscribe('machine-1-channel');
 channel.bind('machine-1-sync', function(data) {
   addData(progressChart, 'June', data.volt);
