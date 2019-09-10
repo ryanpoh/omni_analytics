@@ -16,6 +16,7 @@ var employeeRoutes = require('./routes/employees'),
 	processRoutes = require('./routes/processes'),
 	indexRoutes = require('./routes/index'),
 	apiRoutes = require('./routes/api');
+	machineRoutes = require('./routes/machines');
 
 
 mongoose.connect('mongodb+srv://rypoh1:xPh1Fl7T8hS02Lv7@cluster0-u4hbd.mongodb.net/test?retryWrites=true', {
@@ -131,6 +132,7 @@ app.use(employeeRoutes);
 app.use(processRoutes);
 app.use (indexRoutes);
 app.use(apiRoutes);
+app.use(machineRoutes);
 
 
 
@@ -147,7 +149,7 @@ function isLoggedIn(req,res, next){
 
 
 
-//app.listen(3000, function(){   // DEBUG LOCALLY
-app.listen(process.env.PORT || 5000, function(){  //DEPLOYMENT
+app.listen(3000, function(){   // DEBUG LOCALLY
+//app.listen(process.env.PORT || 5000, function(){  //DEPLOYMENT
 	console.log('Omni Analytics v10 server listening on port 5000');
 });

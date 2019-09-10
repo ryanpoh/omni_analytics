@@ -1,0 +1,44 @@
+<% include partials/header %>
+<div class="container">
+  <div class="jumbotron">
+    <div class="container">
+      <a href="/employees/" class="btn btn-default btn-lg"
+        ><i class="fas fa-arrow-circle-left"></i> Go Back</a
+      >
+      <img
+        align="right"
+        src="https://digistorm-websites.s3-ap-southeast-2.amazonaws.com/cac-au-qld-27-website/content/Imported/Monash_Uni_Logo.jpg?mtime=20180928141803"
+        class="img-rounded"
+        width="250px"
+        height="75px"
+      />
+    </div>
+
+    <h1>Machine Status</h1>
+    <div = class="row">
+    <div class="col-lg-4">
+      <img
+        src="https://i.imgur.com/PjXujqt.jpg"
+        class="img-rounded"
+        width="90%"
+        height="90%"
+      />
+    </div>
+    <div class="col-lg-6" id="profile_details">
+      <p>
+        <b>Name:</b>
+        <span>xxxx</span>
+      </p>
+      <p><b>Employee ID:</b> <span>xxx</span></p>
+      <p><b>Department:</b> <span>xx</span></p>
+      <p><b>Position:</b> <span>xxx</span></p>
+      <p><b>Base Salary:</b> <span>RM xxxx</span></p>
+    </div>
+
+    <div class="row"></div>
+    <div class="col-lg-6">
+      <canvas id="progressChart" width="50%" height="50%"></canvas>
+      <script src="/js/machine_chart.js"></script>
+    </div>
+  </div>
+</div>
