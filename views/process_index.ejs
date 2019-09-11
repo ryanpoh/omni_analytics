@@ -4,11 +4,11 @@
 
 	<div class = "container">
 		<div class="jumbotron">
-	  		<h1>Lot Search</h1>
+	  		<h1>Client Search</h1>
 	  		<div class="row">
 	  			<div class="input-group input-group-lg col-lg-6">
 					  <span class="input-group-addon" id="sizing-addon1">Key <i class="fas fa-key"></i></span>
-					  <input type="number" class="form-control" placeholder="Lot ID" aria-describedby="sizing-addon1">
+					  <input type="number" class="form-control" placeholder="Enter Client ID" aria-describedby="sizing-addon1">
 				</div>
 				<span><button class="btn btn-default btn-lg col-lg-6">Search</button></span>
 	  		</div>
@@ -16,12 +16,12 @@
 			<table class="table">
 			  <thead>
 			    <tr>
-			      <th scope="col">Lot ID</th>
-			      <th scope="col">Lot Name</th>
+			      <th scope="col">Client ID</th>
+			      <th scope="col">Client Name</th>
 			      <th scope="col">Quantity (pcs.)</th>
 			      <th scope="col">Status</th>
-			      <th scope="col">Lot Cost (RM)</th>
-			      <th scope="col">Lot Sell (RM)</th>
+			      <th scope="col">Total Cost (RM)</th>
+			      <th scope="col">Total Sell (RM)</th>
 			      <th scope="col">Overall Completion (%)</th>
 			      <th scope="col"></th> 
 			    </tr>
@@ -36,7 +36,7 @@
 					  <td><%= (process.estimatedCost).toFixed(2);  %></td>
 					  <td><%= (process.estimatedSell).toFixed(2);  %></td>
 					  <td><%= (process.overallCompletion).toFixed(2);  %></td>
-					  <td><span><a  href="/lots/<%= process._id %>" class="btn btn-default btn-m">Go</a></span></td>
+					  <td><span><a  href="/clients/<%= process._id %>" class="btn btn-default btn-m">Go</a></span></td>
 					</tr>
 				<% }); %>
 			  </tbody>

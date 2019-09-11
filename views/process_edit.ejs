@@ -5,7 +5,7 @@
 		Edit <%= lot.lotName %>'s Lot Profile
 	</h1>
 	<hr>
-	<form action="/lots/<%= lot._id %>?_method=PUT" method="POST">
+	<form action="/clients/<%= lot._id %>?_method=PUT" method="POST">
 	  <div class="form-group">
 		<label for="1">Lot Name:</label>	  	
 		<input id ="1" class="form-control" type="text" step ="any" name="editLot[lotName]" value="<%= lot.lotName %>" >

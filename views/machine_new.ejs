@@ -1,8 +1,11 @@
 
 <% include partials/header %>
 
+<div class="container">
+  <form style="color: #000000;" id="volt-form" action="/machines" method="POST">
+      <input id="1" type="text" placeholder="volt" name="volt" />
+      <input id="2" type="text" placeholder="progress" name="progress" />
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 
-<form id="volt-form" action="/machines" method="POST">
-    <input id="1" type="text" placeholder="" name="volt" />
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+</div>

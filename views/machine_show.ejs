@@ -35,93 +35,132 @@
       <p><b>Base Salary:</b> <span>RM xxxx</span></p>
     </div>
 
-    <div class="row"></div>
-    <div class="col-lg-6">
-      <canvas id="progressChart" width="50%" height="50%"></canvas>
 
-      <!-- <form id="volt-form" action="/machines" method="POST">
-        <input id="1" type="text" placeholder="" name="volt" />
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form> -->
+
+    <!-- 
+      var count = Number(document.getElementById('count').innerHTML); //set this on page load in a hidden field after an ajax call
+var total = document.getElementById('total').innerHTML; //set this on initial page load
+var pcg = Math.floor(count/total*100);        
+document.getElementsByClassName('progress-bar').item(0).setAttribute('aria-valuenow',pcg);
+document.getElementsByClassName('progress-bar').item(0).setAttribute('style','width:'+Number(pcg)+'%'); -->
+      
+
+
+    <div class="row">
+        <div class="col-lg-6" >
+          <canvas id="progressChart" width="50%" height="50%"></canvas>
+        </div>
+        <div class="col-lg-6" >
+          <canvas id="progressChart" width="50%" height="50%"></canvas>
+        </div>					
+      </div>
+      <div class="row">
+        
+          <div class="progress">
+              <div
+                class="progress-bar progress-bar-success progress-bar-striped active progress-bar-1"
+                role="progressbar"
+                aria-valuenow="83"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width:0%"
+              >
+                0%
+              </div>
+            </div>
+
+
+      </div>
 
       <script>
 
-      var voltArray = [<%= voltArray %>] //the [] is removed by default, so we have to add it back
-      console.log(voltArray)
-        
-      
+               var voltArray = [<%= voltArray %>] //the [] is removed by default, so we have to add it back
+               var currentProgress =  [<%= progressArray %>].slice(-1)[0] //take the last value of the array
+               console.log(voltArray)
+               console.log(currentProgress)
 
-        var months = ['Feb', 'March', 'April', 'May'];
-        var averagePerformance = [80, 75, 89, 99];
+               var globalCounter=0;
 
-        machineData = {
-          type: 'line',
-          data: {
-            labels: months,
-            datasets: [
-              {
-                label: 'Employee Performance',
-                backgroundColor: 'rgba(121, 61, 244, 0.5)',
-                data: averagePerformance
+              // METHODS
+              function addData(chart, label, data) {
+                chart.data.labels.push(label);
+                chart.data.datasets.forEach(dataset => {
+                  dataset.data.push(data);
+                });
+                chart.update();
               }
-            ]
-          },
-          options: {
-            title: {
-              display: true,
-              text: 'Machine 1 Monthly Average Performance',
-              fontSize: 15
-            },
-            scales: {
-              yAxes: [
-                {
-                  ticks: {
-                    beginAtZero: true
-                  }
-                }
-              ]
-            }
-          }
-        };
 
-        // METHODS
-        function addData(chart, label, data) {
-          chart.data.labels.push(label);
-          chart.data.datasets.forEach(dataset => {
-            dataset.data.push(data);
-          });
-          chart.update();
-        }
+              function removeData(chart) {
+                chart.data.labels.pop();
+                chart.data.datasets.forEach(dataset => {
+                  dataset.data.pop();
+                });
+                chart.update();
+              }
 
-        function removeData(chart) {
-          chart.data.labels.pop();
-          chart.data.datasets.forEach(dataset => {
-            dataset.data.pop();
-          });
-          chart.update();
-        }
+              function updateProgressBar(className, currentProgress) {
+                document.getElementsByClassName(className).item(0).setAttribute('style','width:'+Number(currentProgress)+'%');
+                document.getElementsByClassName(className).item(0).innerHTML = 'IN PROGRESS:  '+Number(currentProgress)+'%'
+              }
 
-        // Draw initial graph
-        var ctx = document.getElementById('progressChart').getContext('2d');
-        let progressChart = new Chart(ctx, machineData);
-        voltArray.forEach((data) => {
-          addData(progressChart, 'June', data);
-        })
-        
-        // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
+                         machineData = {
+                           type: 'bar',
+                           data: {
+                             labels: [], //y values
+                             datasets: [
+                               {
+                                 label: 'Voltage Consumption',
+                                 backgroundColor: 'rgba(255, 255, 0, 0.5)',
+                                 data: [] // x values
+                               }
+                             ]
+                           },
+                           options: {
+                             title: {
+                               display: true,
+                               text: 'Machine 1 Operational Efficiency',
+                               fontSize: 15
+                             },
+                             scales: {
+                               yAxes: [
+                                 {
+                                   ticks: {
+                                     beginAtZero: true, // similar to "min: 0"
+                                     max: 100
+                                   }
+                                 }
+                               ]
+                             }
+                           }
+                         };
 
-        // Dynamic update
-        var pusher = new Pusher('5ed5a1f25586a0760edb', {
-          cluster: 'ap1',
-          forceTLS: true
-        });
-        // Dynamic Update
-        var channel = pusher.subscribe('machine-1-channel');
-        channel.bind('machine-1-sync', function(data) {
-          addData(progressChart, 'June', data.volt);
-        });
 
+
+                        // Draw initial progress bar
+                         updateProgressBar('progress-bar-1', currentProgress);
+                        // Draw initial graph
+                         var ctx = document.getElementById('progressChart').getContext('2d');
+                         let progressChart = new Chart(ctx, machineData);
+                         voltArray.forEach((data) => {
+                           addData(progressChart, globalCounter, data);
+                           globalCounter++
+                         })
+
+                         // Enable pusher logging - don't include this in production
+                         Pusher.logToConsole = true;
+
+                         // Dynamic update
+                         var pusher = new Pusher('5ed5a1f25586a0760edb', {
+                           cluster: 'ap1',
+                           forceTLS: true
+                         });
+                         // Dynamic Update
+                         var channel = pusher.subscribe('machine-1-channel');
+                         channel.bind('machine-1-sync', function(data) {
+                           updateProgressBar('progress-bar-1', data.progress)
+                           addData(progressChart, globalCounter, data.volt);
+                           globalCounter++
+                         });
       </script>
     </div>
   </div>

@@ -19,8 +19,10 @@ router.get('/machines/new', function(req, res) {
 
 router.get('/machines', function(req, res) {
   var voltArray = [];
+  var progressArray = [];
   var objToPass = {
-    voltArray: voltArray
+    voltArray: voltArray,
+    progressArray: progressArray
   };
 
   MachineData.find({}, (err, machineDbData) => {
@@ -33,9 +35,12 @@ router.get('/machines', function(req, res) {
         var string = JSON.stringify(data);
         var obj = JSON.parse(string);
         voltArray.push(obj.volt);
+        progressArray.push(obj.progress)
         console.log('test');
-        console.log(voltArray);
+        
       });
+      console.log(voltArray)
+      console.log(progressArray)
       res.render('machine_show', objToPass);
 
       // var string = JSON.stringify(machineDbData[0]);
@@ -57,11 +62,12 @@ router.get('/machines', function(req, res) {
 
 router.post('/machines', function(req, res) {
   var volt = req.body.volt;
+  var progress = req.body.progress;
 
   newData = {
     volt: volt,
     active: 1,
-    progress: 70,
+    progress: progress,
     machineId: 1
   };
 
