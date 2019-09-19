@@ -139,17 +139,17 @@ app.use(machineRoutes);
 function isLoggedIn(req,res, next){
 	// if(req.isAuthenticated()){
 	if(true){
-		console.log("YOU PASS");
+		//console.log("YOU PASS");
 		return next();
 	}
-	console.log("YOU FAIL");
+	//console.log("YOU FAIL");
 	res.redirect("/login");
 }
 
 
 
 
-app.listen(3000, function(){   // DEBUG LOCALLY
-//app.listen(process.env.PORT || 5000, function(){  //DEPLOYMENT
+//app.listen(3000, function(){   // DEBUG LOCALLY
+app.listen(process.env.PORT || 5000, function(){  //DEPLOYMENT
 	console.log('Omni Analytics v10 server listening on port 5000');
 });

@@ -129,10 +129,10 @@ router.get('/home', isLoggedIn, function(req, res){
 function isLoggedIn(req,res, next){
 	// if(req.isAuthenticated()){
 	if(true){
-		console.log("YOU PASS");
+		//console.log("YOU PASS");
 		return next();
 	}
-	console.log("YOU FAIL");
+	//console.log("YOU FAIL");
 	res.redirect("/login");
 }
 
