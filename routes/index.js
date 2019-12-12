@@ -111,6 +111,8 @@ router.get('/home', isLoggedIn, function(req, res){
 							}											 
 						});
 
+						
+
 
 					});
 
